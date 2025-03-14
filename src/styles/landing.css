@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+.animation-transition {
+    transition: all 0.3s ease;
+}
+
+.animation-transition:hover {
+    transform: translate3d(0, -1px, 20px);
+    animation: on-hover 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes on-hover {
+    0% {
+        text-shadow: 0 0 0 transparent;
+        color: #faebd7;
+    }
+
+    33% {
+        text-shadow: 20px 0 70px #DD0031;
+        color: #DD0031;
+    }
+
+    66% {
+        text-shadow: 20px 0 70px #41B883;
+        color: #41B883;
+    }
+
+    100% {
+        text-shadow: 0 0 0 transparent;
+        color: #faebd7;
+    }
+}
+
+@keyframes on-hover {
+    0% {
+        text-shadow: 0 0 0 transparent;
+        color: #faebd7;
+    }
+
+    33% {
+        text-shadow: 20px 0 70px #DD0031;
+        color: #DD0031;
+    }
+
+    66% {
+        text-shadow: 20px 0 70px #41B883;
+        color: #41B883;
+    }
+
+    100% {
+        text-shadow: 0 0 0 transparent;
+        color: #faebd7;
+    }
+}
+
+
+
+
+.m {
+    font-size: 2vw;
+    letter-spacing: 0.7em;
+    font-weight: 300;
+    z-index: 4;
+    color: #41B883;
+    text-shadow: 2px 2px 10px #41B883;
+    -webkit-animation: loading 1s ease-in-out infinite alternate;
+    animation: loading 1s ease-in-out infinite alternate;
+}
+
+.m:hover {
+    color: #41B883;
+    font-weight: 500;
+}
+
+@-webkit-keyframes loading {
+    to {
+        text-shadow: 20px 0 70px #DD0031;
+        color: #DD0031;
+    }
+}
+
+@keyframes loading {
+    to {
+        text-shadow: 20px 0 70px #DD0031;
+        color: #DD0031;
+    }
+}
+
+.m:nth-child(2) {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+}
+
+.m:nth-child(3) {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.m:nth-child(4) {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+.m:nth-child(5) {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.m:nth-child(6) {
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+.m:nth-child(7) {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.m:nth-child(8) {
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+.m:nth-child(9) {
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.m:nth-child(10) {
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+
+.m:nth-child(11) {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.m:nth-child(13) {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.m:nth-child(14) {
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+
+.m:nth-child(15) {
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.m:nth-child(16) {
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+.m:nth-child(17) {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.m:nth-child(18) {
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+.m:nth-child(19) {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.m:nth-child(20) {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+.m:nth-child(21) {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.m:nth-child(22) {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+}

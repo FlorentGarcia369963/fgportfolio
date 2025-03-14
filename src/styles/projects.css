@@ -1,0 +1,24 @@
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    height: 500px;
+    width: 500px;
+    box-shadow: 0 0 10px 1px rgba(250, 235, 215, 0.2);
+    color: #faebd7;
+    border-radius: 25px;
+    padding: 10px;
+    position: relative;
+    background-color: #101828;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transition: all 0.3s;
+    transform: scale(120%);
+    z-index: 10;
+
+
+}

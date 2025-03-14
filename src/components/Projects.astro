@@ -1,0 +1,42 @@
+---
+import ProjectCard from './part/ProjectCard.astro'
+type Project={
+    title:string;
+    githubLink:string;
+    image:string;
+    image2?:string;
+    description:string;
+    technos:string;
+}
+const personnalProjects: Project[]= [
+    {title:'CinéDélices', githubLink:'https://github.com/orgs/Cinedelices/repositories', image:'/cd-home.webp', image2:'/cd-catalog.webp', description:"Un client (fictif!) dont la spécialité est la diffusion de films, séries et mangas en streaming nous a contacté car il souhaite mettre en oeuvre une stratégie qui pourrait le propulser au-delà de ses grands concurrents. Il s’agit de créer une communauté autour de la cuisine inspirée voire tirée de leurs diffusions. Il a donc besoin de nos services pour créer un site qui proposerait des recettes originales rattachées à une diffusion, et de donner l’occasion aux utilisateurs inscrits de proposer leurs propres recettes et anecdotes, puis pour mettre en place un système de commentaires, et de likes.", technos:' react, typescript, vitejs, tailwindcss, expressjs, docker'},
+    {title:'SocialSecu', githubLink:'https://github.com/FlorentGarcia369963/mini_secu', image:'/social-secu.webp', description:"Il s'agit de développer une application web simple permettant le transfert de fichiers en vue du traitement d'une demande. Réalisé avec symfony 6.4, moteur de template Twig, un peu de javascript, et bootstrap pour le front-end.", technos:' symfony, javascript, bootstrap, docker'},
+    {title:'Bonsaïs (en cours)', githubLink:'https://github.com/orgs/Cinedelices/repositories', image:'/bonsai.webp', description:'Projet en cours, le but est d\'apprendre Angular au travers d\'un e-commerce de bonsaïs.', technos:' angular, tailwindcss'}
+]
+
+const professionalProjects: Project[]= [
+    {title:'Todoleaf', githubLink:'', image:'/todoleaf_ui.webp', description:' Stage de 2 mois réalisé de septembre à novembre 2024 pour le développement d\'un outil de gestion de plantes (prévoir différents traitements pour nos plantes afin d\'en prendre soin au mieux).', technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker'},
+    {title:'Kerem&Co (en construction)', githubLink:'', image:'/kerem-site.webp', description:"site statique pour aider un ami dans sa carrière de musicien. J'ai démarré ce site en svelte puis j'ai migré sur Astro. Svelte est utilisé sur certains composants. Astro permet de tout compiler en HTML et de ne charger le JS que lorsque nécessaire. Au bout du compte, je profite de la syntaxe simple de Svelte, et j'obtiens un site ultra léger. J'ai également utilisé tailwind pour l'efficacité que cet outil apporte.", technos:'astrojs, svelte, tailwindcss'}
+]
+---
+
+
+<section id="projects" class="h-[100vh] mt-5">
+    <h2 class="text-[#faebd7] text-[3vw] ml-5 mb-12 pb-0.5 tracking-wider ">Mes projets</h2>
+    <h3 class="text-[#faebd7] text-[2vw] w-full text-center mb-12 pb-0.5 tracking-wider ">Réalisations professionnelles</h3>
+<div class="flex-skill">
+    {professionalProjects.map((project: Project) => (
+                <ProjectCard project={project}></ProjectCard>
+
+      ))}
+</div>
+
+<h3 class="text-[#faebd7] text-[2vw] w-full text-center mb-12 pb-0.5 tracking-wider ">Réalisations personnelles</h3>
+<div class="flex-skill">
+    {personnalProjects.map((project: Project) => (
+        <ProjectCard project={project}></ProjectCard>
+
+))}
+</div>
+
+</section>

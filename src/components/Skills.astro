@@ -1,0 +1,64 @@
+---
+import SkillCard from './part/SkillCard.astro'
+type Skill = {
+    title: string;
+    logo: string;
+}
+const frontendSkills: Skill[] = [
+{title: 'HTML', logo:"/svg/html-icon.svg"},
+{title: 'CSS', logo:"/svg/css-icon.svg"},
+{title: 'SASS', logo:"/svg/sass-icon.svg"},
+{title: 'Tailwind', logo:"/svg/tailwindcss-icon.svg"},
+{title: 'Javascript', logo:"/svg/javascript-icon.svg"},
+{title: 'Typescript', logo:"/svg/typescript-icon.svg"},
+{title: 'ViteJS', logo:"/svg/vitejs-icon.svg"},
+{title: 'React', logo:"/svg/react-icon.svg"},
+{title: 'VueJS', logo:"/svg/vuejs-icon.svg"},
+];
+
+const backendSkills: Skill[]=[
+{title: 'NodeJS', logo:"/svg/nodejs-icon.svg"},
+{title: 'PHP', logo:"/svg/php-icon.svg"},
+{title: 'ExpressJS', logo:"/svg/expressjs-icon.svg"},
+{title: 'Laravel', logo:"/svg/laravel-icon.svg"},
+{title: 'postgreSQL', logo:"/svg/postgresql-icon.svg"},
+{title: 'Sequelize', logo:"/svg/sequelize-icon.svg"},
+{title: 'Docker', logo:"/svg/docker-icon.svg"},
+];
+
+const learningSkills: Skill[]=[
+{title: 'Angular', logo:"/svg/angular-icon.svg"},
+{title: 'Java', logo:"/svg/java-icon.svg"},
+];
+
+---
+
+<section id="skills" class="">
+    <h2 class="text-[#faebd7] text-[3vw] ml-5 mb-12 pb-0.5 tracking-wider ">Mes compétences</h2>
+    <h3 class="text-[#faebd7] text-[2vw] w-full text-center mb-12 pb-0.5 tracking-wider ">Front end</h3>
+<!-- <div class="grid grid-cols-5 justify-items-center  gap-10 w-6/10 m-auto"> -->
+<div class="flex-skill">
+    {frontendSkills.map((skill: Skill) => (
+                <SkillCard skill={skill}></SkillCard>
+
+      ))}
+</div>
+<h3 class="text-[#faebd7] text-[2vw] w-full text-center my-12 pb-0.5 tracking-wider ">Back end</h3>
+<div class="flex-skill">
+    {backendSkills.map((skill: Skill) => (
+                <SkillCard skill={skill}></SkillCard>
+
+      ))}
+</div>
+
+<h3 class="text-[#faebd7] text-[2vw] w-full text-center my-12 pb-0.5 tracking-wider ">En cours d'apprentissage</h3>
+<div class="flex-skill">
+    {learningSkills.map((skill: Skill) => (
+        <SkillCard skill={skill}></SkillCard>
+    
+      ))}
+</div>
+</section>
+
+<style>
+</style>

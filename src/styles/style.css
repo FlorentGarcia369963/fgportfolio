@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: hsla(219, 42%, 10%, 1);
+    background-image:
+        radial-gradient(at 19% 31%, hsla(219, 42%, 10%, 1) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(153, 47%, 48%, 0.13) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(346, 100%, 43%, 0.4) 0px, transparent 50%);
+    background-size: cover;
+    background-attachment: fixed;
+}
