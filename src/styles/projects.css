@@ -15,10 +15,32 @@
     cursor: pointer;
 }
 
+.astro-gradient {
+    background: rgb(9, 10, 39);
+    background: linear-gradient(90deg, rgba(9, 10, 39, 1) 0%, rgba(24, 20, 102, 1) 21%, rgba(95, 23, 161, 1) 75%, rgba(9, 10, 39, 1) 99%);
+}
+
+.vue-gradient {
+    background: linear-gradient(90deg, #42b883 0%, #35495e 100%);
+}
+
+.angular-gradient::before {
+    background: linear-gradient(90deg, #CA43D7 0%, #E8265E 100%);
+    width: 150%;
+
+
+}
+
 .project-card:hover {
     transition: all 0.3s;
     transform: scale(120%);
     z-index: 10;
+}
 
-
+.test-card {
+    background-image: url('/kerem-site.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 500px;
 }

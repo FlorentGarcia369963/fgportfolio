@@ -1,9 +1,10 @@
----
+<!-- ---
 const {project} = Astro.props;
 const technos = project.technos.split(',').map((techno:string)=>techno.trim())
 
+
 ---
-<article class="project-card relative">
+<article class={`project-card relative ${technos.some((techno:string) => techno === 'astrojs')? 'astro-gradient' : technos.some((techno:string) => techno === 'vuejs')?'vue-gradient':technos.some((techno:string) => techno === 'angular')?'angular-gradient':''}`}>
     <h3>{project.title}</h3>
     <span class="info-text">Cliquez pour afficher les informations</span>
     <img class="rounded-[25px] w-8/10" src={project.image} alt=`image du projet ${project.title}`>
@@ -13,4 +14,11 @@ const technos = project.technos.split(',').map((techno:string)=>techno.trim())
             <img class="w-[50px] h-[50px]" src={`/svg/${techno}-icon.svg`} alt={techno}/>
         ))}
    </div>
-  </article>
+  </article> -->
+
+ 
+  
+
+
+
+
