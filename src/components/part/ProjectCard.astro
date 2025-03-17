@@ -1,24 +1,92 @@
-<!-- ---
+---
 const {project} = Astro.props;
 const technos = project.technos.split(',').map((techno:string)=>techno.trim())
 
+const technoColors = {
+  astrojs: 'astro-gradient',
+  vuejs: 'vue-gradient',
+  angular: 'angular-gradient',
+  react: 'react-color',
+  symfony: 'symfony-color',
+};
+
+const getTechnoColors = (technos: string[]) => {
+  return Object.keys(technoColors).find(techno => technos.includes(techno)) 
+    ? technoColors[Object.keys(technoColors).find(techno => technos.includes(techno)) as keyof typeof technoColors] 
+    : '';
+};
 
 ---
-<article class={`project-card relative ${technos.some((techno:string) => techno === 'astrojs')? 'astro-gradient' : technos.some((techno:string) => techno === 'vuejs')?'vue-gradient':technos.some((techno:string) => techno === 'angular')?'angular-gradient':''}`}>
-    <h3>{project.title}</h3>
-    <span class="info-text">Cliquez pour afficher les informations</span>
-    <img class="rounded-[25px] w-8/10" src={project.image} alt=`image du projet ${project.title}`>
-    {project.githubLink && project.githubLink.trim() !== '' && <a href="">Lien vers github</a>}
-   <div class="flex justify-center gap-3 w-[95%]">
-        {technos.map((techno:string)=> (
-            <img class="w-[50px] h-[50px]" src={`/svg/${techno}-icon.svg`} alt={techno}/>
-        ))}
-   </div>
-  </article> -->
-
- 
+<article class="flex items-center justify-center gap-32">
+    <div  class={`project-card ${getTechnoColors(technos)}`}>
+      <h3>{project.title}</h3>
+      <div class="h-1/2 w-9/10"><img class=" rounded-[25px] object-cover object-top w-full h-full m-auto" src={project.image} alt=`image du projet ${project.title}`></div>
+      {project.githubLink && project.githubLink.trim() !== '' && <a href="">Lien vers github</a>}
+         <div class="flex items justify-center gap-3 w-[95%] h-1/8">
+          {technos.map((techno:string)=> (
+      
+                <img class="w-1/3 h-full" src={`/svg/${techno}-icon.svg`} alt={techno}/>
+      
+          ))}
+         </div>
+    </div>
+    <div class="w-1/3 text-[#faebd7] text-[16px]">
+      <p class="text-center hover:scale-150 transition-all duration-300">{project.description}</p>
+    </div>
+  </article>
   
 
 
 
 
+ <script>
+  //   const cards = document.querySelectorAll('.project-card');
+  //   const overlay = document.getElementById('overlay')
+  //   if(overlay){
+  
+  //     cards.forEach(card => card.addEventListener('click', ()=>{
+  //       console.log('click');
+        
+  //       overlay.style.opacity='1';
+  //       overlay.style.pointerEvents = 'all';
+  //       const rect = card.getBoundingClientRect();        
+  //       const centerX = window.innerWidth/2 - rect.width /2;
+  //       const centerY = window.innerHeight/2 - rect.height /2;
+  //       const cardEl = card as HTMLElement;
+        
+
+  //       cardEl.style.position='fixed';
+  //       cardEl.style.left=`${centerX}px`;
+  //       cardEl.style.top=`${centerY}px`;
+  //       cardEl.style.zIndex='10';
+  //       cardEl.style.transition='all 0.3s ease';
+       
+     
+        
+  //       overlay.addEventListener('click', ()=>{
+  // console.log('click');
+  
+  //         cardEl.style.position='';
+  //       cardEl.style.left='';
+  //       cardEl.style.top='';
+  //       cardEl.style.zIndex='0';
+  //       overlay.style.opacity='0';
+  //       overlay.style.pointerEvents = 'none';
+
+  //       })
+  //     }))}
+
+    //   cards.forEach(card => card.addEventListener('mouseleave', ()=>{
+    //     overlay.style.opacity='0';
+
+    //     const cardEl = card as HTMLElement
+
+    //     cardEl.style.position='';
+    //     cardEl.style.left=``;
+    //     cardEl.style.top=``;
+    //   }))
+    // }
+
+ </script>
+ 
+  

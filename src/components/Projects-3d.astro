@@ -1,0 +1,273 @@
+---
+import ProjectCard from './part/ProjectCard.astro';
+import Card3D from './part/card-3d.astro';
+import type { Project } from './models/partsModels';
+
+const personnalProjects: Project[]= [
+    {title:'CinéDélices', githubLink:'https://github.com/orgs/Cinedelices/repositories', image:'/cd-home.webp', image2:'/cd-catalog.webp', description:"Un client (fictif!) dont la spécialité est la diffusion de films, séries et mangas en streaming nous a contacté car il souhaite mettre en oeuvre une stratégie qui pourrait le propulser au-delà de ses grands concurrents. Il s’agit de créer une communauté autour de la cuisine inspirée voire tirée de leurs diffusions. Il a donc besoin de nos services pour créer un site qui proposerait des recettes originales rattachées à une diffusion, et de donner l’occasion aux utilisateurs inscrits de proposer leurs propres recettes et anecdotes, puis pour mettre en place un système de commentaires, et de likes.", technos:' react, typescript, vitejs, tailwindcss, expressjs, docker'},
+    {title:'SocialSecu', githubLink:'https://github.com/FlorentGarcia369963/mini_secu', image:'/social-secu.webp', description:"Il s'agit de développer une application web simple permettant le transfert de fichiers en vue du traitement d'une demande. Réalisé avec symfony 6.4, moteur de template Twig, un peu de javascript, et bootstrap pour le front-end.", technos:' symfony, javascript, bootstrap, docker'},
+    {title:'Bonsaïs (en cours)', githubLink:'https://github.com/orgs/Cinedelices/repositories', image:'/bonsai.webp', description:'Projet en cours, le but est d\'apprendre Angular au travers d\'un e-commerce de bonsaïs.', technos:' angular, tailwindcss'}
+]
+
+const professionalProjects: Project[]= [
+    {title:'Todoleaf', githubLink:'', image:'/todoleaf_ui.webp', description:' Stage de 2 mois réalisé de septembre à novembre 2024 pour le développement d\'un outil de gestion de plantes (prévoir différents traitements pour nos plantes afin d\'en prendre soin au mieux).', technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker'},
+    {title:'Kerem&Co (en construction)', githubLink:'', image:'/kerem-site.webp', description:"site statique pour aider un ami dans sa carrière de musicien. J'ai démarré ce site en svelte puis j'ai migré sur Astro. Svelte est utilisé sur certains composants. Astro permet de tout compiler en HTML et de ne charger le JS que lorsque nécessaire. Au bout du compte, je profite de la syntaxe simple de Svelte, et j'obtiens un site ultra léger. J'ai également utilisé tailwind pour l'efficacité que cet outil apporte.", technos:'astrojs, svelte, tailwindcss'}
+]
+---
+<div class="w-full px-[40px] py-[80px] flex flex-wrap justify-center">
+  
+  {professionalProjects.map((project:Project, index:number)=>(
+    <Card3D project={project} index={index} />
+  
+  ))}
+</div>
+<div class="w-full px-[40px] py-[80px] flex flex-wrap justify-center">
+  
+  {personnalProjects.map((project:Project, index:number)=>(
+    <Card3D project={project} index={index} />
+  
+  ))}
+</div>
+
+<!-- 
+<section id="projects" class="h-[100vh] mt-5">
+    <h2 class="text-[#faebd7] text-[3vw] ml-5 mb-12 pb-0.5 tracking-wider ">Mes projets</h2>
+    <h3 class="text-[#faebd7] text-[2vw] w-full text-center mb-12 pb-0.5 tracking-wider ">Réalisations professionnelles</h3>
+<div class="flex-skill">
+    {professionalProjects.map((project: Project) => (
+                <ProjectCard project={project}></ProjectCard>
+
+      ))}
+</div>
+
+<h3 class="text-[#faebd7] text-[2vw] w-full text-center mb-12 pb-0.5 tracking-wider ">Réalisations personnelles</h3>
+<div class="flex-skill">
+    {personnalProjects.map((project: Project) => (
+        <ProjectCard project={project}></ProjectCard>
+
+))}
+</div>
+
+</section> -->
+
+<!-- <style>
+
+
+.title {
+  font-family: "Raleway";
+  font-size: 24px;
+  font-weight: 700;
+  color: #5D4037;
+  text-align: center;
+}
+
+.container {
+  padding: 40px 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-wrap {
+  margin: 10px;
+  transform: perspective(800px);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.card-wrap:hover .card-info {
+  transform: translateY(0);
+}
+
+.card-wrap:hover .card-info p {
+  opacity: 1;
+  transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-wrap:hover .card-info,
+.card-wrap:hover .card-info p {
+  transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-wrap:hover .card-info:after {
+  transition: 5s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-wrap:hover .card-bg {
+  transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+    opacity: 0.8;
+}
+
+.card-wrap:hover .cd-card {
+  transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px,
+              rgba(255, 255, 255, 1) 0 0 0 1px,
+              rgba(0, 0, 0, 0.66) 0 30px 60px 0,
+              inset #333 0 0 0 5px,
+              inset white 0 0 0 6px;
+}
+
+.cd-card {
+  position: relative;
+  flex: 0 0 240px;
+  width: 240px;
+  height: 320px;
+  background-color: #333;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+  transition: transform 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+will-change: transform;
+}
+/* $hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
+$returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95); */
+.card-bg {
+  opacity: 0.5;
+  position: absolute;
+  top: -20px; left: -20px;
+  width: 120%;
+  height: 120%;
+  padding: 20px;
+  background-image: url("https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop=");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: transform 1s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+  opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  will-change: transform;
+  pointer-events: none;
+}
+
+.card-info {
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  transform: translateY(40%);
+  transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  will-change: transform;
+}
+
+.card-info p {
+  opacity: 0;
+  text-shadow: rgba(0, 0, 0, 1) 0 2px 3px;
+  transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: transform;
+}
+
+.card-info * {
+  position: relative;
+  z-index: 1;
+}
+
+.card-info:after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+  background-blend-mode: overlay;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  will-change: transform;
+}
+
+.card-info h1 {
+  font-family: "Playfair Display";
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
+}
+
+  </style>
+
+<div id="app" class="container">
+
+  <div class="card-wrap" ref="card">
+      <div id="cd-card" class="cd-card"
+        :style="cardStyle">
+        <div id="card-bg" class="card-bg"></div>
+        <div class="card-info">
+          <h1 slot="header">Canyons</h1>
+    <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const card = document.getElementById("cd-card");
+      const cardBg = document.getElementById("card-bg");
+      const cardInfo = document.querySelector(".card-info");
+
+      let width = 0;
+      let height = 0;
+      let mouseX = 0;
+      let mouseY = 0;
+      let mouseLeaveDelay = null;
+
+      console.log(card?.offsetWidth);
+      console.log(card?.offsetHeight);
+
+      
+      width = card.offsetWidth;
+      height = card.offsetHeight;
+      console.log(width);
+      console.log(height);
+      
+      
+      card.addEventListener("mousemove", handleMouseMove);
+      card.addEventListener("mouseenter", handleMouseEnter);
+      card.addEventListener("mouseleave", handleMouseLeave);
+
+      function handleMouseMove(e) {
+        const { left, top, width, height } = card.getBoundingClientRect();
+
+mouseX = e.clientX - left - width / 2;
+mouseY = e.clientY - top - height / 2;
+        console.log(e.pageX);
+       
+        
+        
+
+        let mousePX = mouseX / width;
+        let mousePY = mouseY / height;
+       
+
+        let rX = mousePX * 30;
+        let rY = mousePY * -30;
+        
+
+        let tX = mousePX * -40;
+        let tY = mousePY * -40;
+       
+        card.style.transform = `rotateY(${rX}deg) rotateX(${rY}deg)`;
+        cardBg.style.transform = `translateX(${tX}px) translateY(${tY}px)`;
+      }
+
+      function handleMouseEnter() {
+        clearTimeout(mouseLeaveDelay);
+      }
+
+      function handleMouseLeave() {
+        mouseLeaveDelay = setTimeout(() => {
+          mouseX = 0;
+          mouseY = 0;
+          card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+          cardBg.style.transform = `translateX(0) translateY(0)`;
+        }, 1000);
+      }
+    });
+  </script> -->

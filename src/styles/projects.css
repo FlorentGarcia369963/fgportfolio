@@ -2,10 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     text-align: center;
-    height: 500px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
     box-shadow: 0 0 10px 1px rgba(250, 235, 215, 0.2);
     color: #faebd7;
     border-radius: 25px;
@@ -14,6 +14,15 @@
     background-color: #101828;
     cursor: pointer;
 }
+
+.project-card:hover {
+    transition: all 0.3s;
+    transform: scale(150%);
+    z-index: 10;
+
+}
+
+
 
 .astro-gradient {
     background: rgb(9, 10, 39);
@@ -24,23 +33,14 @@
     background: linear-gradient(90deg, #42b883 0%, #35495e 100%);
 }
 
-.angular-gradient::before {
-    background: linear-gradient(90deg, #CA43D7 0%, #E8265E 100%);
-    width: 150%;
-
-
+.angular-gradient {
+    background: linear-gradient(90deg, #471E4C 0%, #DD0031 50%, #DD0031 100%);
 }
 
-.project-card:hover {
-    transition: all 0.3s;
-    transform: scale(120%);
-    z-index: 10;
+.react-color {
+    background-color: #3C7C90;
 }
 
-.test-card {
-    background-image: url('/kerem-site.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 500px;
-    height: 500px;
+.symfony-color {
+    background-color: #53565D;
 }

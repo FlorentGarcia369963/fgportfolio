@@ -1,0 +1,255 @@
+---
+import type { Project } from '../models/partsModels';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props as Props;
+const cardId=`cd-card-${index}`;
+const cardBg=`card-bg-${index}`;
+const cardInfo = `card-info-${index}`;
+
+---
+<style>
+
+
+    .title {
+      font-family: "Raleway";
+      font-size: 24px;
+      font-weight: 700;
+      color: #5D4037;
+      text-align: center;
+    }
+    
+    .container {
+      padding: 40px 80px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .card-wrap {
+      margin: 10px;
+      transform: perspective(800px);
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    
+    .card-wrap:hover .card-info {
+      transform: translateY(0);
+    }
+    
+    .card-wrap:hover .card-info p {
+      opacity: 1;
+      transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .card-wrap:hover .card-info,
+    .card-wrap:hover .card-info p {
+      transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .card-wrap:hover .card-info:after {
+      transition: 5s cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .card-wrap:hover .card-bg {
+      transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
+      will-change: transform;
+        opacity: 0.8;
+    }
+    
+    .card-wrap:hover .cd-card {
+      transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+      will-change: transform;
+      box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px,
+                  rgba(255, 255, 255, 1) 0 0 0 1px,
+                  rgba(0, 0, 0, 0.66) 0 30px 60px 0,
+                  inset #333 0 0 0 5px,
+                  inset white 0 0 0 6px;
+    }
+    
+    .cd-card {
+      position: relative;
+      flex: 0 0 240px;
+      width: 240px;
+      height: 320px;
+      background-color: #333;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+      transition: transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    will-change: transform;
+    }
+    /* $hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
+    $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95); */
+    .card-bg {
+      opacity: 0.5;
+      position: absolute;
+      top: -20px; left: -20px;
+      width: 120%;
+      height: 120%;
+      padding: 20px;
+      background-image: url("https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop=");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      transition: transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+      opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    
+      will-change: transform;
+      pointer-events: none;
+    }
+    
+    .card-info {
+      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      color: #fff;
+      transform: translateY(40%);
+      transition: 0.4s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    
+      will-change: transform;
+    }
+    
+    .card-info p {
+      opacity: 0;
+      text-shadow: rgba(0, 0, 0, 1) 0 2px 3px;
+      transition: 0.4s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      will-change: transform;
+    }
+    
+    .card-info * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .card-info:after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+      background-blend-mode: overlay;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    
+      will-change: transform;
+    }
+    
+    .card-info h1 {
+      font-family: "Playfair Display";
+      font-size: 36px;
+      font-weight: 700;
+      text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
+    }
+    
+      </style>
+    
+    
+    
+      <div id={`card-wrap-${index}`}  class="card-wrap" ref="card">
+          <div  id={cardId} data-index={index} class="cd-card"
+            >
+            <div id={cardBg} class="card-bg"></div>
+            <div class="card-info">
+              <h1 slot="header">Canyons</h1>
+        <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </div>
+    
+    
+    
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const cards = document.querySelectorAll(".cd-card");
+          // const cardBg = document.getElementById("card-bg");
+          // const cardIn = document.getElementById("card-info");
+
+          console.log(cards);
+          
+
+          
+    
+          let width = 0;
+          let height = 0;
+          let mouseX = 0;
+          let mouseY = 0;
+          let mouseLeaveDelay = null;
+    
+       
+    
+          
+          width = cards[0].offsetWidth;
+          height = cards[0].offsetHeight;
+          
+          cards.forEach(card=>{
+            const cardWrap = card.closest('.card-wrap');
+            cardWrap.addEventListener("mousemove", handleMouseMove);
+            cardWrap.addEventListener("mouseenter", handleMouseEnter);
+            cardWrap.addEventListener("mouseleave", handleMouseLeave);
+          })
+          
+          // cards.forEach(card=>card.closest('.card-wrap').addEventListener("mousemove", handleMouseMove));
+          // cards.forEach(card=>card.closest('.card-wrap').addEventListener("mouseenter", handleMouseEnter));
+          // cards.forEach(card=>card.closest('.card-wrap').addEventListener("mouseleave", handleMouseLeave));
+          let card
+          let cardBg
+    
+          function handleMouseMove(e) {
+            const cardId =e.target.closest('.cd-card').getAttribute('data-index');
+            console.log(cardId);
+            
+            card = cards[cardId]
+            cardBg = document.getElementById(`card-bg-${cardId}`)
+            console.log(card);
+            console.log(cardBg);
+            
+            
+
+            const { left, top, width, height } = card.getBoundingClientRect();
+    
+            mouseX = e.clientX - left - width / 2;
+            mouseY = e.clientY - top - height / 2;
+            // console.log(e.pageX);
+           
+            
+            
+    
+            let mousePX = mouseX / width;
+            let mousePY = mouseY / height;
+           
+    
+            let rX = mousePX * 30;
+            let rY = mousePY * -30;
+            
+    
+            let tX = mousePX * -40;
+            let tY = mousePY * -40;
+           
+            card.style.transform = `rotateY(${rX}deg) rotateX(${rY}deg)`;
+            cardBg.style.transform = `translateX(${tX}px) translateY(${tY}px)`;
+          }
+    
+          function handleMouseEnter() {
+            clearTimeout(mouseLeaveDelay);
+          }
+    
+          function handleMouseLeave() {
+            mouseLeaveDelay = setTimeout(() => {
+              mouseX = 0;
+              mouseY = 0;
+              card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+              cardBg.style.transform = `translateX(0) translateY(0)`;
+            }, 1000);
+          }
+        });
+      </script>

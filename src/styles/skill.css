@@ -10,6 +10,9 @@
     @apply flex flex-wrap gap-8 w-8/10 m-auto items-center justify-center;
 }
 
+
+
+
 .card {
     display: flex;
     flex-direction: column;
