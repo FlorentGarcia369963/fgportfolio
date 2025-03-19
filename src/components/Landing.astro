@@ -1,5 +1,6 @@
 ---
 const title="Développeur Full-Stack";
+const announcement = "En recherche d'une alternance à partir d'août 2025 pour continuer mon évolution et devenir Concepteur Développeur d'Application"
 ---
 
 <section id="landing" class="flex flex-col items-center justify-center gap-32 h-[100vh]">
@@ -22,26 +23,25 @@ const title="Développeur Full-Stack";
             
         </div>
         <div class="flex justify-center items-center">
-        <img class="landing-img object-cover  rounded-full w-[400px] h-[400px] " src="lkd2.webp" alt="">
+        <img id="" class="landing-img object-cover  rounded-full w-[400px] h-[400px] " src="lkd2.webp" alt="">
          </div>
     </div>
     <div class="">
-        <p class="text-[#faebd7] text-xl tracking-widest">En recherche d'une alternance à partir d'août 2025 pour continuer mon évolution et devenir Concepteur Développeur d'Application</p>
+       
+        <p class="text-[#faebd7] text-xl tracking-widest w-6/10 text-center m-auto">{announcement.split('').map((letter)=>(
+            <span class="lumiere">{letter}</span>
+        ))}</p>
     </div>
 </section>
 
-<!-- <section class="nav">
-    <h1>Florent Garcia</h1>
+<script>
 
-    <h3 class="span loader">
-        <span class="m">F</span>
-        <span class="m">l</span>
-        <span class="m">o</span>
-        <span class="m">r</span>
-        <span class="m">e</span>
-        <span class="m">n</span>
-        <span class="m">t</span>
-    </h3>
-</section>  -->
+    const lumiereEls= Array.from(document.querySelectorAll('.lumiere')) as HTMLElement[];
+    lumiereEls.forEach((element,index)=>{
+        element.style.animationDelay=`${index *15}ms`
+    })
+
+
+</script>
 
  

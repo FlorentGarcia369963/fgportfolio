@@ -1,4 +1,5 @@
 export type Project = {
+    id: number;
     title: string;
     context: string;
     githubLink: string;

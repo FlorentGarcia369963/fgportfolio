@@ -1,0 +1,91 @@
+<section  class="timeline">
+    <h2 class="text-[#faebd7] text-[3vw] ml-5 mb-12 pb-0.5 tracking-wider ">Mon parcours</h2>
+ 
+        <ul>
+          <li>
+            <div>
+              <time>Septembre 2024 - Novembre 2024</time> Stage de développement web full-stack pour l'application Todoleaf, dédiée au suivi de l'entretien des plantes.'
+            </div>
+          </li>
+          
+          <li>
+            <div>
+              <time>Mars 2024 - Septembre 2024</time> Reconversion professionnelle réussie dans le Développement Web et Web Mobile, diplômé du titre professionnel de l'école O'Clock, obtenu en décembre 2024.
+            </div>
+          </li>
+          <li>
+            <div>
+              <time>Janvier 2022 - Février 2024 </time> Proche aidant, formation auprès d'un artisan spécialisé dans la culture et la transformation des plantes aromatiques et médicinales. Élaboration d'un projet, malheureusement annulé en raison de la sécheresse hivernale et printanière de 2023. Réalisation de diverses missions.
+            </div>
+          </li>
+          <li>
+            <div>
+              <time>Septembre 2015 - Décembre 2022</time> Responsable fruits et légumes chez Biocoop, très polyvalent. Gestion fournisseurs, fidélisation clients, encadrement d’équipe de 2 à 4
+              personnes, entre 23% et 30% du CA du magasin (moyenne nationale 17%)
+            </div>
+          </li>
+          <li>
+              <div>
+                  <time>Septembre 2014 - Septembre 2015</time> Expériences de woofing au sein de diverses structures, visant à développer une compréhension approfondie de la terre et de l'agriculture durable
+                </div>
+            </li>
+            <li>
+              <div>
+                <time>Janvier 2014 - Août 2014</time> Stage dans le cadre de mon master chez Nutra Canada à Champlain, Québec. Participation à la production d'extraits de plantes à vocation thérapeutique, ainsi qu'aux activités de contrôle qualité et de Recherche et Développement
+              </div>
+            </li>
+          <li>
+            <div>
+              <time>Septembre 2012 - Août 2014</time> Master en biologie des Plantes avec une spécialisation en phytochimie à Strasbourg
+            </div>
+          </li>
+          <li>
+            <div>
+              <time>Mars 2012 - Juin 2012 </time> Stage dans le cadre de ma licence consacré à l'analyse qualitative et quantitative des polyphénols d'une collection de lambrusques
+            </div>
+          </li>
+          <li>
+            <div>
+              <time>Septembre 2009 - Février 2012</time> Licence Biologie des Plantes à Montpellier
+            </div>
+          </li>
+          
+        </ul>
+    
+</section>
+
+<script>
+    (function () {
+  "use strict";
+
+  // define variables
+  var items = document.querySelectorAll(".timeline li");
+
+  // check if an element is in viewport
+  // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+  function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  function callbackFunc() {
+    for (var i = 0; i < items.length; i++) {
+      if (isElementInViewport(items[i])) {
+        items[i].classList.add("in-view");
+      }
+    }
+  }
+
+  // listen for events
+  window.addEventListener("load", callbackFunc);
+  window.addEventListener("resize", callbackFunc);
+  window.addEventListener("scroll", callbackFunc);
+})();
+
+</script>

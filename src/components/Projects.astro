@@ -1,97 +1,70 @@
 ---
-import ProjectCard from './part/ProjectCard.astro';
 import type { Project } from './models/partsModels';
-import Flickity from "flickity";
 import 'flickity/dist/flickity.min.css';
+import PhotoModal from './part/Modal.astro';
 
 
 const projects: Project[]= [
-    {title:'Todoleaf', context:'Réalisé en stage', githubLink:'', image:'/todoleaf_ui.webp', description:' Stage de 2 mois réalisé de septembre à novembre 2024 pour le développement d\'un outil de gestion de plantes (prévoir différents traitements pour nos plantes afin d\'en prendre soin au mieux).', technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker'},
-    {title:'Bonsaïs (en cours)', context:'Réalisation personnelle', githubLink:'https://github.com/orgs/Cinedelices/repositories', image:'/bonsai.webp', description:'Projet en cours, le but est d\'apprendre Angular au travers d\'un e-commerce de bonsaïs.', technos:' angular, tailwindcss'},
-    {title:'Kerem&Co (en construction)', context:'Réalisation professionnelle', githubLink:'', image:'/kerem-site.webp', description:"Site statique pour aider un ami dans sa carrière de musicien. J'ai démarré ce site en svelte puis j'ai migré sur Astro. Svelte est utilisé sur certains composants. Astro permet de tout compiler en HTML et de ne charger le JS que lorsque nécessaire. Au bout du compte, je profite de la syntaxe simple de Svelte, et j'obtiens un site ultra léger. J'ai également utilisé tailwind pour l'efficacité que cet outil apporte.", technos:'astrojs, svelte, tailwindcss'},  
-    {title:'Ciné Délices', context:'Réalisé en formation', githubLink:'https://github.com/orgs/Cinedelices/repositories', image:'/cd-home.webp', image2:'/cd-catalog.webp', description:"Un client (fictif!) dont la spécialité est la diffusion de films, séries et mangas en streaming nous a contacté car il souhaite mettre en oeuvre une stratégie qui pourrait le propulser au-delà de ses grands concurrents. Il s’agit de créer une communauté autour de la cuisine inspirée voire tirée de leurs diffusions. Il a donc besoin de nos services pour créer un site qui proposerait des recettes originales rattachées à une diffusion, et de donner l’occasion aux utilisateurs inscrits de proposer leurs propres recettes et anecdotes, puis pour mettre en place un système de commentaires, et de likes.", technos:' react, typescript, vitejs, tailwindcss, expressjs, docker'},
-    {title:'Social Secu', context:'Réalisation personnelle', githubLink:'https://github.com/FlorentGarcia369963/mini_secu', image:'/social-secu.webp', description:"Il s'agit de développer une application web simple permettant le transfert de fichiers en vue du traitement d'une demande. Réalisé avec symfony 6.4, moteur de template Twig, un peu de javascript, et bootstrap pour le front-end.", technos:' symfony, javascript, bootstrap, docker'}
+    {id:1, title:'Todoleaf', context:'Réalisé en stage', githubLink:'', image:'/todoleaf_ui.webp', description:`Stage de 2 mois réalisé de septembre à novembre 2024. /n /n Développement d’une application d’aide à la gestion des plantes avec un front-end en Vue.js et TailwindCSS, intégrant des maquettes et des formulaires interactifs pour créer des plantes étape par étape avec upload d’images, sécurisés contre les attaques XSS, CSRF, validation stricte des entrées utilisateur pour prévenir les injections SQL et les abus de type \'file upload\'. /n /n Côté back-end, mise en œuvre avec Laravel d’un système de tables, modèles, contrôleurs et services pour traiter les uploads (conversion WebP, compression Tinify, stockage Google Cloud), optimisé via Redis et un système de files d’attente, réduisant le temps de traitement de 25s à quelques secondes, avec un rendu instantané via le local
+storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker'},
+    {id:2, title:'Kerem&Co (en construction)', context:'Réalisation professionnelle', githubLink:'', image:'/kerem-site.webp', description:"Site statique pour aider un ami dans sa carrière de musicien. /n J'ai démarré ce site en svelte puis j'ai migré sur Astro. Svelte est utilisé sur certains composants. Astro permet de tout compiler en HTML et de ne charger le JS que lorsque nécessaire. /n Au bout du compte, je profite de la syntaxe simple de Svelte, et j'obtiens un site ultra léger. J'ai également utilisé tailwind pour l'efficacité que cet outil apporte.", technos:'astrojs, svelte, tailwindcss'},  
+    {id:3, title:'Bonsaïs (en cours)', context:'Réalisation personnelle', githubLink:'https://github.com/FlorentGarcia369963/Bonsais', image:'/bonsai.webp', description:'Dans le cadre de mon développement de compétences en Angular et Java, je conçois un site e-commerce dédié à la vente de bonsaïs. Ce projet me permet d’approfondir mes connaissances en développement front-end avec Angular, ainsi qu\'en back-end avec Java. /n /n Actuellement, je travaille sur la gestion des produits, le panier d\'achat, et la mise en place d\'un système de paiement sécurisé. /n La roadmap est affichée sur le dépôt GitHub :)', technos:' angular, tailwindcss'},
+    {id:4, title:'Ciné Délices', context:'Réalisé en formation', githubLink:'https://github.com/orgs/Cinedelices/repositories', image:'/cd-home.webp', image2:'/cd-catalog.webp', description:"Projet en cours de formation, en équipe de 5. L'objectif était de concevoir une application Web de recette de cuisines inspirées ou tirées du cinéma à partir de 0. /n Cela s'est déroulé en 4 sprint d'une semaine: /n Semaine1: conception, nous avons définit la raison d'être de l'application, le public visé, nous avons écrit un cahier des charges, définit une identité visuelle, définit un MVP(Minimum Viable Product), choisi les technologies (React/Express) conçu les zoning, wireframes et maquettes. /n Semaine 2: Développement du MVP, mise en place de l'architecture et développement des pages et fonctionnalités, en suivant le gitflow décidé: chacun pousse le code sur sa branche, une branche par fonctionnalité, on réunit le code sur la branche \"Dev\" après relecture, et puis sur Master pour la production. Utilisation de Scrum pour le suivi quotidien via Slack et Discord pour le débogage. /n Semaine 3: Affinage et développement des fonctionnalités avancées, type système de likes et de commentaires. /n Semaine 4: Finitions, puis présentation devant l'ensemble de la classe O'Clock.", technos:' react, typescript, vitejs, tailwindcss, expressjs, docker'},
+    {id:5, title:'Social Secu', context:'Réalisation personnelle', githubLink:'https://github.com/FlorentGarcia369963/mini_secu', image:'/social-secu.webp', description:"Projet Symfony - Système de gestion de factures pour la CPAM: /n Dans le cadre d'une candidature à un poste de développeur web à la CPAM, j'ai réalisé un projet avec Symfony, mettant en place un système d'authentification et de gestion des rôles. /n Le projet permet à un utilisateur de soumettre une facture via un formulaire, un conseiller de la valider, puis un agent de déclencher un remboursement après validation. /n J'ai apprécié découvrir Symfony et ses commandes CLI, qui génèrent des composants et services quasi prêts à l'emploi, simplifiant grandement le développement.", technos:' symfony, javascript, bootstrap, docker'}
 ]
-
-// const professionalProjects: Project[]= [
-//     {title:'Todoleaf', githubLink:'', image:'/todoleaf_ui.webp', description:' Stage de 2 mois réalisé de septembre à novembre 2024 pour le développement d\'un outil de gestion de plantes (prévoir différents traitements pour nos plantes afin d\'en prendre soin au mieux).', technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker'},
-//     {title:'Kerem&Co (en construction)', githubLink:'', image:'/kerem-site.webp', description:"Site statique pour aider un ami dans sa carrière de musicien. J'ai démarré ce site en svelte puis j'ai migré sur Astro. Svelte est utilisé sur certains composants. Astro permet de tout compiler en HTML et de ne charger le JS que lorsque nécessaire. Au bout du compte, je profite de la syntaxe simple de Svelte, et j'obtiens un site ultra léger. J'ai également utilisé tailwind pour l'efficacité que cet outil apporte.", technos:'astrojs, svelte, tailwindcss'}
-// ]
-
-
-             
+       
 ---
 
 
 <section class="h-[100vh]">
     <h2 class="text-[#faebd7] text-[3vw] ml-5 mb-12 pb-0.5 tracking-wider ">Mes projets</h2>
     <div class="hero-slider" data-carousel>
-        <!-- début cell -->
-         {projects.map((project:Project)=>(
-             <div class="carousel-cell" style={`background-image:url(${project.image});`}>
-            <div class="overlay"></div>
-            <div class="inner">
-                 <div>
-                     <h3 class="subtitle">{project.context}</h3>
-                                     <h2 class="title">{project.title}</h2>
-                     <a href="https://flickity.metafizzy.co/" target="_blank" class="btn">En savoir plus</a>
-                 </div>
-                {/* <a class="absolute left-[50%] translate-[-50%] bottom-[-60%]" href={project.githubLink}>Lien GitHub</a> */}
-              <div class="flex justify-around w-full absolute bottom-[-150%]">
-                {project.technos.split(',').map((techno:string)=>techno.trim()).map((techno:string)=>(
-                    <img class="w-[6%]" src={`/svg/${techno}-icon.svg`} alt={techno}/>
-                 ))}
+      {projects.map((project: Project) => (
+        <div id="info-container" class="carousel-cell" style={`background-image:url(${project.image});`}>
+          <div class="overlay"></div>
+          <div class="inner">
+            <div class="flex flex-col items-center ">
+              <div class="presentation-mini ">
+                <h3 class="subtitle text-shadow">{project.context}</h3>
+                <h2 class="title text-shadow">{project.title}</h2>
+                <button data-project-id={project.id} id={`${project.id}`} class="btn more-btn">En savoir plus</button>
+              </div>
+              
+              <div id="btn-to-display" class="hidden-part">
+              
+                  
+                  <div class="mt-6 mx-auto text-xl w-[70%] h-[200px] overflow-y-auto text-shadow">{project.description.split('/n').map(line=>(
+                    <span>{line} <br /></span>
+                  ))}</div>
+                  
+              
+    
+                <div class="text-xl underline flex justify-center items-center gap-12 mt-6">
+                  {project.githubLink !== '' && (
+                    <a class="text-shadow" href={project.githubLink}>Voir le projet sur GitHub</a>
+                  )}
+                  <button type="button" id="see-photo-btn" data-img={project.image} class="text-shadow">Voir la photo</button>
+                  <button id="reduction-btn" class="text-shadow">Réduire</button>
+                </div>
+              </div> 
+            </div>
+            <div class="flex justify-around w-full">
+              {project.technos.split(',').map((techno: string) => techno.trim()).map((techno: string) => (
+                <img class="w-[6%]" src={`/svg/${techno}-icon.svg`} alt={techno} />
+              ))}
             </div>
           </div>
-        </div>
-         ))}
-        <!-- <div class="carousel-cell" style="background-image:url(/todoleaf_ui.webp);">
-            <div class="overlay"></div>
-            <div class="inner">
-            <h3 class="subtitle">Réalisé en stage</h3>
-            <h2 class="title">Todoleaf</h2>
-            <a href="https://flickity.metafizzy.co/" target="_blank" class="btn">En savoir plus</a>
-          </div>
-        </div> -->
-<!-- fin cell -->
-        <!-- <div class="carousel-cell" style="background-image:url(/kerem-site.webp);">
-            <div class="overlay"></div>
-            <div class="inner">
-            <h3 class="subtitle">Réalisation professionnelle</h3>
-            <h2 class="title">Kerem&Co</h2>
-            <a href="https://flickity.metafizzy.co/" target="_blank" class="btn">En savoir plus</a>
-          </div>
-        </div>
-        <div class="carousel-cell" style="background-image:url(/cd-home.webp);">
-            <div class="overlay"></div>
-            <div class="inner">
-            <h3 class="subtitle">Réalisé en formation</h3>
-            <h2 class="title">Ciné Délices</h2>
-            <a href="https://flickity.metafizzy.co/" target="_blank" class="btn">En savoir plus</a>
-          </div>
-        </div>
-      <div class="carousel-cell" style="background-image:url(/bonsai.webp);">
-        <div class="overlay"></div>
-        <div class="inner">
-            <h3 class="subtitle">Réalisation personnelle</h3>
-            <h2 class="title">Bonsaï</h2>
-            <a href="https://flickity.metafizzy.co/" target="_blank" class="btn">En savoir plus</a>
-          </div>
-        </div>
-      <div class="carousel-cell" style="background-image:url(/social-secu.webp);">
-        <div class="overlay"></div>
-        <div class="inner">
-            <h3 class="subtitle">Réalisation personnelle</h3>
-            <h2 class="title">Mini sécu</h2>
-            <a href="https://flickity.metafizzy.co/" target="_blank" class="btn">En savoir plus</a>
-          </div>
-        </div> -->
-      </div>
-</section>
-
+        </div>  
+      ))}
+    </div>
+    </section>
+    <PhotoModal id="photoModal" >
+      <img id="img-modal" src="" alt="">
+    </PhotoModal>
 <script>
+  //Flickity carousel
     import Flickity from "flickity";
-    var options = {
+    const options = {
   accessibility: true,
   prevNextButtons: true,
   pageDots: true,
@@ -106,17 +79,132 @@ const projects: Project[]= [
   }
 };
 
-var carousel = document.querySelector('[data-carousel]');
-var slides = document.getElementsByClassName('carousel-cell');
-var flkty = new Flickity(carousel, options);
+const carousel = document.querySelector('[data-carousel]') as HTMLElement | null;
+const slides = document.getElementsByClassName('carousel-cell');
 
-flkty.on('scroll', function () {
-  flkty.slides.forEach(function (slide, i) {
-    var image = slides[i];
-    var x = (slide.target + flkty.x) * -1/3;
-    image.style.backgroundPosition = x + 'px';
+if(carousel){
+
+  const flkty = new Flickity(carousel, options);
+  
+  flkty.on('scroll', function () {
+    flkty.slides.forEach(function (slide:any, i:number) {
+      const image = slides[i] as HTMLElement;
+      
+      const x = (slide.target + (flkty as any).x) * -1/3;
+      image.style.backgroundPosition = x + 'px';
+    });
   });
-});
+}
+//more informations
+const moreBtnEls = document.querySelectorAll('.more-btn');
+moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
+  btn.classList.add('hidden');
+  const project= btn.closest('.inner');
+  const reductionBtnEl = project?.querySelector('#reduction-btn')
+  
+  const btnToDisplayEl = project?.querySelector('#btn-to-display') as HTMLElement;
+  // btnToDisplayEl?.classList.remove('hidden-part')
+  const presentationEl = project?.querySelector('.presentation-mini')
+  presentationEl?.classList.add('clicked')
+  btnToDisplayEl?.classList.add("visible","flex","flex-col")
+  // See photo
+  const displayPhotoBtnEl = project?.querySelector('#see-photo-btn');
+  console.log(displayPhotoBtnEl);
+  
+  const photoModal = document.getElementById('photoModal')
+  displayPhotoBtnEl?.addEventListener('click', ()=>{
+    
+    photoModal?.classList.add('show')
+
+    const imageToDisplay = displayPhotoBtnEl?.getAttribute('data-img')
+    if(imageToDisplay){
+      photoModal?.querySelector('#img-modal')?.setAttribute('src',imageToDisplay)
+    }
+  })
+
+  // affichage fleche au scroll
+  if (btnToDisplayEl) {
+    
+   
+// closing
+  reductionBtnEl?.addEventListener('click', ()=>{
+    console.log('click');
+    
+    btn.classList.add('hidden');
+presentationEl?.classList.remove('clicked')
+btnToDisplayEl?.classList.remove("visible","flex","flex-col")
+btn.classList.remove('hidden');
+
+  })
+
+  // Close by calling next or previous project
+  const fArrows = document.querySelector('.flickity-prev-next-button')
+  console.log(fArrows);
+  fArrows?.addEventListener('click', ()=>{
+    btn.classList.add('hidden');
+presentationEl?.classList.remove('clicked')
+btnToDisplayEl?.classList.remove("visible","flex","flex-col")
+btn.classList.remove('hidden');
+  })
+  
+
+}
+}))
+
+
+// const moreInfosModalEl = document.getElementById('moreInfosModal') as HTMLElement;
+// const closeBtn = moreInfosModalEl?.querySelector(".close-btn") as HTMLElement;
+// const modalContentEl = moreInfosModalEl.querySelector(".modal-content") as HTMLElement;
+
+// console.log(modalContentEl);
+
+// moreBtnEls.forEach(btn => {
+//   btn.addEventListener('click', ()=>{
+
+//     if(btn){
+
+//       const projectDataAttribute = btn.getAttribute('data-project')
+//       if(projectDataAttribute){
+//         const projectData = JSON.parse(projectDataAttribute)
+//         console.log(projectData);
+        
+//         if(moreInfosModalEl){
+//             moreInfosModalEl.classList.add("show")
+
+//             modalContentEl.style.backgroundImage=`url(${projectData.image})`
+//             const projectTitle = moreInfosModalEl.querySelector('#project-title')
+//             const projectDescription = moreInfosModalEl.querySelector('#project-description')
+//             const projectGitHubLink = moreInfosModalEl.querySelector ('#project-githubLink') as HTMLElement
+//             if(projectTitle && projectDescription){
+//               projectTitle.textContent=projectData.title;
+//             projectDescription.textContent= projectData.description;
+//             console.log(projectData.githubLink);
+//             if(projectGitHubLink && projectData.githubLink !== ''){
+//                 projectGitHubLink.textContent = 'Lien vers le GitHub du projet'
+//                 projectGitHubLink.setAttribute('href', projectData.githubLink)
+//             }
+            
+//             }
+            
+//         }
+//       }
+//     }
+// })
+// })
+
+//Fermeture de la modale
+// moreInfosModalEl?.addEventListener("click", (e) => {
+//     if (e.target === moreInfosModalEl) {
+//       moreInfosModalEl?.classList.remove("show");
+//     }
+//   });
+
+//   closeBtn?.addEventListener("click", () => {
+//     moreInfosModalEl?.classList.remove("show");
+//   });
+
+
+
 
 
 </script>

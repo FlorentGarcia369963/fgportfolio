@@ -29,10 +29,14 @@
 
 .hero-slider .carousel-cell .inner {
     position: relative;
+    height: 80%;
     top: 50%;
     transform: translateY(-50%);
     color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 
 }
 
@@ -101,4 +105,33 @@
 .hero-slider .flickity-page-dots .dot.is-selected {
     background: #ff0000;
     border: 0 solid #ff0000;
+}
+
+.presentation-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: position 0.3s ease, transform 0.3s ease;
+}
+
+.presentation-mini.clicked {
+    top: 0;
+    position: relative;
+    transform: translateY(0);
+}
+
+.hidden-part {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
