@@ -1,0 +1,270 @@
+<style>
+    *{
+	box-sizing: border-box;
+}
+textarea {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+.wrap{
+	width: 100%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+.box{
+	font-size: 1.2em;
+	line-height: 1.6em;
+  text-align: center;
+}
+/*screen resolutions lower than 620px*/
+@media all and (max-width: 1180px){
+	.wrap{
+	width: 100%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	}
+}
+
+
+.contact-wrap h2{
+	margin-bottom: 50px;
+  position: relative;
+  display: block;
+}
+.contact-wrap p a{
+	color: #00B16A;
+  text-decoration: none;
+}
+.contact-wrap .wrap {
+	text-align: center;
+	width: 100%;
+}
+.contact-wrap .box{
+	text-align: center;
+	margin: 5% 0 0 0;
+	width: 100%;
+}
+
+.contact-form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 40px;
+}
+.contact-form .input-block {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 60px;
+  border-bottom: 2px solid #00b16a;
+  margin: 0;
+  position: relative;
+  margin-bottom: 20px;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.contact-form .input-block.focus {
+  
+}
+.contact-form .input-block.textarea {
+  height: auto;
+}
+.contact-form .input-block.textarea .form-control {
+  height: auto;
+  resize: none;
+}
+.contact-form .input-block label {
+  position: absolute;
+  left: 10px;
+  top: 25px;
+  display: block;
+  margin: 0;
+  font-weight: 400;
+  z-index: 1;
+  color: #aaa;
+  font-size: 18px;
+  line-height: 10px;
+}
+.contact-form .input-block .form-control {
+  background-color: transparent;
+  margin: 0;
+  outline: none;
+  border: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  height: auto;
+    padding: 30px 10px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  font-size: 18px;
+  color: #faebd7;
+}
+.contact-form .input-block .form-control:focus label {
+  top: 0;
+}
+.contact-form .square-button {
+  background-color: #00B16A;
+  color: #fff;
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 0 60px;
+  height: 60px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  width: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.contact-form .square-button:hover, .contact-form .square-button:focus {
+  background-color: #66CC99;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+}
+
+@media (min-width: 768px) {
+  .contact-wrap {
+    margin: auto;
+  }
+}
+@media (max-width: 868px) {
+	.contact-form {
+	  width: 100%;
+	  padding: 40px;
+	}
+}
+@media (max-width: 568px) {
+	.contact-form {
+	  padding: 10px;
+	}
+}
+/*----page styles---*/
+
+.contact-wrap {
+  padding: 15px;
+  height: 100vh;
+}
+
+.contact-wrap h1 {
+  background-color: white;
+  color: #ff7c62;
+  padding: 40px;
+  margin: 0 0 50px;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+}
+.contact-wrap h1 small {
+  font-size: 18px;
+  display: block;
+  text-transform: none;
+  font-weight: 300;
+  margin-top: 10px;
+  color: #ff7c62;
+}
+
+
+</style>
+
+    <section id="contact" class="contact-wrap">
+        <h2 class="text-[#faebd7] text-[3vw] ml-5 mb-12 pb-0.5 tracking-wider">Me contacter</h2>
+        <p class="text-[#faebd7] text-[20px] w-full text-center">Vous pouvez m'écrire à l'adresse email florent.garcia369@gmail.com ou remplir le formulaire ci dessous</p>
+      <form action="https://formspree.io/f/xzzedvnw" method="POST" class="contact-form">
+        <div class="">
+        <div class="">
+          <div class="input-block">
+            <label for="nom">Votre Nom</label>
+            <input id="nom" name="nom" type="text" class="form-control" required>
+          </div>
+        </div>
+        <div class="">
+          <div class="input-block">
+            <label for="email">Votre email</label>
+            <input id="email" name="email" type="text" class="form-control" required>
+          </div>
+        </div>
+        <div class="">
+          <div class="input-block">
+            <label for="subject">Le sujet de votre message</label>
+            <input id="subject" name="subject" type="text" class="form-control" required>
+          </div>
+        </div>
+        <div class="">
+          <div class="input-block textarea">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="3" type="text" class="form-control" required></textarea>
+          </div>
+        </div>
+        <div class="">
+          <button type="submit" class="square-button" >Envoyer</button>
+        </div>
+      </form>
+    </section>
+
+
+
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+  // Sélectionner tous les champs de formulaire
+  const formControls = document.querySelectorAll('.contact-form .form-control');
+  
+  // Vérifier si un champ a une valeur au chargement de la page
+  formControls.forEach(function(input) {
+    const targetItem = input.parentElement;
+    if (input.value) {
+      const label = targetItem.querySelector('label');
+      label.style.top = '10px';
+      label.style.fontSize = '14px';
+    }
+  });
+
+  // Ajouter l'effet focus
+  formControls.forEach(function(input) {
+    input.addEventListener('focus', function() {
+      const parent = input.parentElement;
+      parent.classList.add('focus');
+      const label = parent.querySelector('label');
+      label.style.transition = 'top 0.3s, font-size 0.3s';
+      label.style.top = '10px';
+      label.style.fontSize = '14px';
+    });
+
+    // Ajouter l'effet blur
+    input.addEventListener('blur', function() {
+      const parent = input.parentElement;
+      if (input.value.length === 0) {
+        parent.classList.remove('focus');
+        const label = parent.querySelector('label');
+        label.style.transition = 'top 0.3s, font-size 0.3s';
+        label.style.top = '25px';
+        label.style.fontSize = '18px';
+      }
+    });
+  });
+});
+
+</script>
