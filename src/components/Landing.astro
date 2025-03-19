@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import lkd2 from "../assets/lkd2.webp"
 const title="Développeur Full-Stack";
 const announcement = "En recherche d'une alternance à partir d'août 2025 pour continuer mon évolution et devenir Concepteur Développeur d'Application"
 ---
@@ -23,7 +25,8 @@ const announcement = "En recherche d'une alternance à partir d'août 2025 pour 
             
         </div>
         <div class="flex justify-center items-center">
-        <img id="" class="landing-img object-cover  rounded-full w-[400px] h-[400px] " src="lkd2.webp" alt="">
+            <Image src={lkd2}alt="" width={400} height={300} class="landing-img object-cover  rounded-full w-[400px] h-[400px]" loading={"eager"} />
+        <!-- <img id="" class="landing-img object-cover  rounded-full w-[400px] h-[400px] " src="lkd2.webp" alt=""> -->
          </div>
     </div>
     <div class="">

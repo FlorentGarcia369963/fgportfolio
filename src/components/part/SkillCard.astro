@@ -3,6 +3,6 @@ const {skill} = Astro.props;
 
 ---
 <article class="card">
-    <img class="w-1/2" src={skill.logo} alt={skill.title} />
+    <img class="w-1/2" src={skill.logo} alt={skill.title} loading="lazy"/>
     <h3>{skill.title}</h3>
   </article>

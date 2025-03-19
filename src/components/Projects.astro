@@ -16,7 +16,7 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
 ---
 
 
-<section class="h-[100vh]">
+<section id="projects" class="h-[100vh]">
     <h2 class="text-[#faebd7] text-[3vw] ml-5 mb-12 pb-0.5 tracking-wider ">Mes projets</h2>
     <div class="hero-slider" data-carousel>
       {projects.map((project: Project) => (
@@ -50,7 +50,7 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
             </div>
             <div class="flex justify-around w-full">
               {project.technos.split(',').map((techno: string) => techno.trim()).map((techno: string) => (
-                <img class="w-[6%]" src={`/svg/${techno}-icon.svg`} alt={techno} />
+                <img class="w-[6%]" src={`/svg/${techno}-icon.svg`} alt={techno} loading="lazy"/>
               ))}
             </div>
           </div>
@@ -59,7 +59,7 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
     </div>
     </section>
     <PhotoModal id="photoModal" >
-      <img id="img-modal" src="" alt="">
+      <img class=" w-full mx-auto" id="img-modal" src="" alt="" loading="eager">
     </PhotoModal>
 <script>
   //Flickity carousel
@@ -113,13 +113,21 @@ moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
   
   const photoModal = document.getElementById('photoModal')
   displayPhotoBtnEl?.addEventListener('click', ()=>{
+    const ModalCloseBtn = document.getElementById('modal-close-btn')
     
     photoModal?.classList.add('show')
+
 
     const imageToDisplay = displayPhotoBtnEl?.getAttribute('data-img')
     if(imageToDisplay){
       photoModal?.querySelector('#img-modal')?.setAttribute('src',imageToDisplay)
     }
+    const modalCloseBtn = document.getElementById('modal-close-btn')
+  if(modalCloseBtn){
+    modalCloseBtn.addEventListener('click',()=>{
+      photoModal?.classList.remove('show')
+    })
+  }
   })
 
   // affichage fleche au scroll

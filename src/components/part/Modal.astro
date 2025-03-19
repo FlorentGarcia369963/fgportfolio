@@ -4,8 +4,8 @@ const { id } = Astro.props;
 
 <div id={id} class="modal-overlay hidden">
   <div class="modal-content">
-    <button class="close-btn">X</button>
-    <slot></slot>
+    <button id="modal-close-btn" class="close-btn">X</button>
+    <slot ></slot>
   </div>
 </div>
 
@@ -14,11 +14,10 @@ const { id } = Astro.props;
     position: fixed;
     top: 50%;
     left: 50%;
-    right: 0;
-    bottom: 0;
-    height: 70vh;
-    width: 70vw;
-    transform: translate(-50% ,-50%);
+    transform: translate(-50%,-50%);
+
+    
+    /* transform: translate(-50% ,-50%); */
     /* background-color: rgba(0, 0, 0, 0.5); */
     display: flex;
     justify-content: center;
@@ -27,6 +26,9 @@ const { id } = Astro.props;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s;
+    /* height: 80vh; */
+    width: 70vw;
+    overflow-y: auto;
   }
 
   .modal-overlay.show {
@@ -40,6 +42,8 @@ const { id } = Astro.props;
     padding: 20px;
     border-radius: 10px;
     position: relative;
+    height: 100%;
+    width: 100%;
     
   }
 
