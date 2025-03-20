@@ -10,9 +10,6 @@
     @apply flex flex-wrap gap-8 max-w-6/10 m-auto items-center justify-center;
 }
 
-
-
-
 .card {
     display: flex;
     flex-direction: column;
@@ -76,13 +73,3 @@
     transition: opacity .5s;
     animation: spin 2.5s linear infinite alternate;
 }
-
-/* @keyframes spin {
-    0% {
-        --rotate: 0deg;
-    }
-
-    100% {
-        --rotate: 360deg;
-    }
-} */

@@ -1,11 +1,14 @@
 ---
 import { Image } from "astro:assets";
-import lkd2 from "../assets/lkd2.webp"
+import lkd2 from "../../assets/lkd2.webp";
+import lkdIcon from "../../assets/lkd-icon.svg";
+import gitHubIcon from "../../assets/github-icon.svg";
+
 const title="Développeur Full-Stack";
 const announcement = "En recherche d'une alternance à partir d'août 2025 pour continuer mon évolution et devenir Concepteur Développeur d'Application"
 ---
 
-<section id="landing" class="flex flex-col items-center justify-center gap-32 h-[100vh]">
+<section id="landing" class="flex flex-col items-center justify-center gap-32 h-[100vh]" aria-label="Accueil">
     <div class="flex w-9/10 justify-evenly items-center">
         <div class="flex flex-col justify-center items-center relative text-center py-0 px-4">
             <p class="text-[#faebd7] opacity-20 text-[3vw] hover:opacity-100 ease-in-out duration-300">Salut, je suis</p>
@@ -24,9 +27,19 @@ const announcement = "En recherche d'une alternance à partir d'août 2025 pour 
             </div>
             
         </div>
-        <div class="flex justify-center items-center">
-            <Image src={lkd2}alt="" width={400} height={300} class="landing-img object-cover  rounded-full w-[400px] h-[400px]" loading={"eager"} />
-        <!-- <img id="" class="landing-img object-cover  rounded-full w-[400px] h-[400px] " src="lkd2.webp" alt=""> -->
+        <div class="flex flex-col justify-center items-center">
+            <Image src={lkd2} alt="" width={400} height={400} class="object-cover w-[400px] h-[400px] rounded-full" loading={"eager"} />
+            <div class="flex items-center gap-12">
+                <a href="https://github.com/FlorentGarcia369963" target="_blank">
+                    <Image src={lkdIcon} alt="" width={20} height={20} class="text-[#faebd7] object-cover w-[100px] h-[100px] rounded-full " loading={"eager"} />
+                </a>
+                <a href="https://www.linkedin.com/in/florent-garcia-dev/" target="_blank">
+                    <Image src={gitHubIcon} alt="" width={20} height={20} class="text-[#faebd7] object-cover w-[40px] h-[40px]" loading={"eager"} />
+                </a>
+
+            </div>
+
+          
          </div>
     </div>
     <div class="">

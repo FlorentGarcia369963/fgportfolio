@@ -199,15 +199,6 @@
     animation: lumiere-on 0.6s ease-in-out;
 }
 
-#landing-arrow {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-#landing-arrow.loaded {
-    opacity: 1;
-}
-
 
 
 @keyframes lumiere-on {

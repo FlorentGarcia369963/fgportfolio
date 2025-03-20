@@ -1,10 +1,21 @@
+---
+const sections = [
+    {id:'landing', label: 'Accueil', class:'homeLink'},
+    {id:'skills', label: 'Compétences', class:'menuLink'},
+    {id:'projects', label: 'Projets', class:'menuLink'},
+    {id:'about', label: 'Parcours', class:'menuLink'},
+    {id:'contact', label: 'Contact', class:'menuLink'},
+
+
+    ]
+---
 <nav id="header" class="text-[#faebd7] fixed font-bold p-5 z-10 w-full px-5 mx-auto flex justify-between items-center gap-20">
-    <a class="homeLink" href="#landing">Accueil</a>
+    <a class="homeLink" href="#landing" data-section="landing">Accueil</a>
     <div class="flex justify-end items-center gap-20">
-        <a class="menuLink" href="#skills">Compétences</a>
-        <a class="menuLink" href="#projects">Projets</a>
-        <a class="menuLink" href="#about">Parcours</a>
-        <a class="menuLink" href="#contact">Contact</a>
+        {sections.map(section=> section.id !== 'landing' && (
+                    <a class="menuLink" href={`#${section.id}`} data-section={section.id}>{section.label}</a>
+
+        ))}
     </div>
 </nav>
 
@@ -40,30 +51,6 @@ if(typeof window !== "undefined"){
 
 }
 
-/* 
-.header-border::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  opacity: 30%;
-  box-shadow: ;
-  background: linear-gradient(90deg, #c2002d 0%, #dd0031 2%, #101828 41%, #101828 80%, #41b883 100%);
-}
-
-.header-border::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -7px;
-  width: 100%;
-  height: 15px;
-  background: linear-gradient(90deg, #c2002d 0%, #dd0031 2%, #101828 41%, #101828 80%, #41b883 100%);
-  filter: blur(5px);
-} */
-
 .menuLink, .homeLink{
     opacity: 75%;
     transition: all ease-in-out 0.3s;
@@ -82,6 +69,11 @@ if(typeof window !== "undefined"){
     animation: pulse 1s ease-in-out infinite;
 
 }
+
+.active-link{
+    text-decoration: underline;
+    animation: pulse 1s ease-in-out infinite;
+	}
 
 @keyframes pulse {
     50%{
