@@ -206,11 +206,26 @@
 
 
 @keyframes lumiere-on {
-    /* to {
-        text-shadow: 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7,0px 0px 20px #faebd7;
-        color: #fffae1;
-    } */
+    0% {
 
+        text-shadow: 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7;
+        color: #fffae1;
+    }
+
+    50% {
+
+        text-shadow: 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7, 0px 0px 60px #faebd7;
+        color: #fffae1;
+    }
+
+    100% {
+
+        text-shadow: 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7, 0px 0px 20px #faebd7;
+        color: #fffae1;
+    }
+}
+
+@-webkit-keyframes lumiere-on {
     0% {
 
         text-shadow: 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7, 0px 0px 90px #faebd7;

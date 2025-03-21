@@ -43,10 +43,23 @@
     --_float-distance: -20px;
     --_float-speed: 1800ms;
     animation: floating var(--_float-speed) ease-in-out infinite;
+    -webkit-animation: floating var(--_float-speed) ease-in-out infinite;
 
 }
 
 @keyframes floating {
+
+    0%,
+    100% {
+        translate: 0;
+    }
+
+    50% {
+        translate: 0 var(--_float-distance, -10px);
+    }
+}
+
+@-webkit-keyframes floating {
 
     0%,
     100% {
@@ -63,6 +76,7 @@
 .card:hover:before,
 .card:hover:after {
     animation: none;
+    -webkit-animation: none;
     opacity: 0;
 }
 
@@ -71,14 +85,24 @@
     width: 80%;
     height: 80%;
     border-radius: 50px;
-    background-image: linear-gradient(var(--rotate), #faebd7, #41B883 43%, #C3002F);
+    background-image: linear-gradient(var(--rotate), rgb(250, 235, 215, 0.7), rgb(65, 184, 131, 0.7) 43%, rgb(195, 0, 47, 0.7));
     position: absolute;
-    filter: blur(20px);
+    filter: blur(15px);
     z-index: -1;
     top: 0%;
     left: 0%;
-    animation: spin 8s linear infinite;
-    opacity: 30%;
+    /* originale */
+    /* animation: spin 2.5s linear infinite alternate;
+    -webkit-animation: spin 2.5s linear infinite alternate; */
+    /* test 1 */
+    /* background-size: 200% 200%;
+    animation: bg-move 6s ease-in-out infinite;
+    -webkit-animation: bg-move 6s ease-in-out infinite; */
+    /* test-2 */
+    animation: smooth-rotate 8s linear infinite;
+    -webkit-animation: smooth-rotate 8s linear infinite;
+    /* opacity: 30%; */
+    will-change: transform, opacity;
 }
 
 .card::after {
@@ -93,11 +117,69 @@
     border-radius: 50%;
     margin: 0 auto;
     transform: scale(0.8);
-    filter: blur(20px);
+    filter: blur(15px);
     background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
     opacity: 1;
     transition: opacity .5s;
-    animation: spin 2.5s linear infinite alternate;
+    /* originale */
+    /* animation: spin 2.5s linear infinite alternate;
+    -webkit-animation: spin 2.5s linear infinite alternate; */
+    /* test 1 */
+    /* background-size: 200% 200%;
+    animation: bg-move 6s ease-in-out infinite;
+    -webkit-animation: bg-move 6s ease-in-out infinite; */
+    /* test-2 */
+    animation: smooth-rotate 8s linear infinite;
+    -webkit-animation: smooth-rotate 8s linear infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes smooth-rotate {
+    0% {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    100% {
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
+@-webkit-keyframes smooth-rotate {
+    0% {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    100% {
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
+@keyframes bg-move {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@-webkit-keyframes bg-move {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .card-container {

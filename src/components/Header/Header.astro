@@ -17,6 +17,7 @@ const sections = [
         background: linear-gradient(120deg, #DD0031, #0F1624, #152A2F, #41B883);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
+    -webkit-animation: gradient 15s ease infinite;
         width: 100vw;
         height: 100vh;
         transition: all 0.6s;
@@ -27,6 +28,18 @@ const sections = [
     }
 
 @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@-webkit-keyframes gradient {
 	0% {
 		background-position: 0% 50%;
 	}
@@ -96,23 +109,33 @@ const sections = [
     opacity: 100%;
     color: #41B883;
     animation: pulse 1s ease-in-out infinite;
+    -webkit-animation: pulse 1s ease-in-out infinite;
 }
 
 .homeLink:hover{
     opacity: 100%;
     color: #C3002F;
     animation: pulse 1s ease-in-out infinite;
+    -webkit-animation: pulse 1s ease-in-out infinite;
 
 }
 
 .active-link{
     text-decoration: underline;
     animation: pulse 1s ease-in-out infinite;
+    -webkit-animation: pulse 1s ease-in-out infinite;
     color: white ;
     text-shadow: black 3px 3px 10px;
 	}
 
 @keyframes pulse {
+    50%{
+        opacity: 50%;
+    }
+    
+}
+
+@-webkit-keyframes pulse {
     50%{
         opacity: 50%;
     }

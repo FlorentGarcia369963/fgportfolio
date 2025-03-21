@@ -186,9 +186,24 @@ time {
 
 .timeline-infinite ul li::after {
     animation: scaleAnimation 2s infinite;
+    -webkit-animation: scaleAnimation 2s infinite;
 }
 
 @keyframes scaleAnimation {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.25);
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+@-webkit-keyframes scaleAnimation {
     0% {
         transform: translateX(-50%) scale(1);
     }
