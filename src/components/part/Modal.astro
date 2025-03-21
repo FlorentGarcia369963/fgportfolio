@@ -26,9 +26,9 @@ const { id } = Astro.props;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s;
-    /* height: 80vh; */
-    width: 70vw;
-    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    /* overflow-y: auto; */
   }
 
   .modal-overlay.show {
@@ -62,8 +62,8 @@ const { id } = Astro.props;
 
   @media (width <= 1000px) {
     .modal-overlay {
-      width: 100vw;
-      height: 100vh;
+      /* width: 100vw;
+      height: 100vh; */
     }
     
   }
