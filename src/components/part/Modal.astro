@@ -3,11 +3,20 @@ const { id } = Astro.props;
 ---
 
 <div id={id} class="modal-overlay hidden">
-  <div class="modal-content">
-    <button id="modal-close-btn" class="close-btn">X</button>
+  <div class="modal-content flex flex-col items-center">
     <slot ></slot>
+    <button id="modal-close-btn" class="close-btn">Fermer</button>
   </div>
 </div>
+
+<script>
+  const overlay = document.querySelector('.modal-overlay') as HTMLElement;
+  overlay.addEventListener('click',()=>{
+    if(overlay){
+      overlay.classList.remove('show');
+    }
+  })
+</script>
 
 <style>
   .modal-overlay {
@@ -50,14 +59,27 @@ const { id } = Astro.props;
 
 
   .close-btn {
-    position: absolute;
+    width: 100px;
+    margin: auto;
+    /* transform: translateX(-50%); */
+    border: 1px solid #faebd7;
+    border-radius: 10px;
+    background: #252525;
+
+    padding: 14px 18px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 3px;
     color: #faebd7;
-    top: 10px;
-    right: 0;
-    background: none;
-    border: none;
-    font-size: 32px;
+    text-decoration: none;
+    transition: all .2s ease;
     cursor: pointer;
+ 
+  }
+
+  .close-btn:hover{
+    background: #faebd7;
+    color: #000;
   }
 
   @media (width <= 1000px) {
