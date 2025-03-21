@@ -29,8 +29,8 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
                 <button data-project-id={project.id} id={`${project.id}`} class="btn more-btn">En savoir plus</button>
               </div>
               
-              <div id="btn-to-display" class="hidden-part">
-                  <div class="min-[800px]:mt-6 mx-auto w-9/10 z-50 bg-black/50 rounded-2xl p-2 min-[800px]:bg-transparent text-sm sm:text-base lg:text-lg xl:text-xl sm:w-7/10  min-[800px]:h-[200px] overflow-y-auto text-shadow">{project.description.split('/n').map(line=>(
+              <div id="btn-to-display" class="hidden-part absolute top-0 h-full">
+                  <div class=" min-[800px]:mt-6 mx-auto w-9/10 z-50 bg-black/50 rounded-2xl p-2 min-[800px]:bg-transparent text-sm sm:text-base lg:text-lg xl:text-xl sm:w-7/10  min-[800px]:h-[200px] overflow-y-auto text-shadow">{project.description.split('/n').map(line=>(
                     <span>{line} <br /></span>
                   ))}</div>
                 <div class="text-lg sm:text-xl underline flex justify-around items-center  my-6">
@@ -128,6 +128,8 @@ btn.classList.remove('hidden');
   fArrows.forEach(arrow =>{
     arrow  .addEventListener('click', ()=>{
     btn.classList.add('hidden');
+    projectContexts?.forEach(projectContext => projectContext.classList.remove('hidden', 'min-[800px]:block'))
+    projectTitles?.forEach(projectTitle => projectTitle.classList.remove('hidden', 'min-[800px]:block'))
 presentationEl?.classList.remove('clicked')
 btnToDisplayEl?.classList.remove("visible","flex","flex-col")
 btn.classList.remove('hidden');
