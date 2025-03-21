@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+    --breakpoint-xxs: 360px;
+    --breakpoint-xs: 420px;
+}
+
+
 .animation-transition {
     transition: all 0.3s ease;
 }
@@ -57,7 +63,6 @@
 
 
 .m {
-    font-size: 2vw;
     letter-spacing: 0.7em;
     font-weight: 300;
     z-index: 4;
@@ -187,7 +192,6 @@
 }
 
 .lumiere {
-    font-size: 20px;
     letter-spacing: 0.1em;
     line-height: 1.25;
     font-weight: 300;

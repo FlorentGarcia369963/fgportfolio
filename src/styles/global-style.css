@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+    --breakpoint-xxs: 360px;
+    --breakpoint-xs: 420px;
+}
+
 @layer utilities {
     .text-shadow {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -20,11 +25,11 @@ body {
 }
 
 body {
-    background-color: hsla(219, 42%, 10%, 1);
+    background-color: #0f1624;
     background-image:
         radial-gradient(at 19% 31%, hsla(219, 42%, 10%, 1) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, hsla(153, 47%, 48%, 0.13) 0px, transparent 50%),
-        radial-gradient(at 0% 0%, hsla(346, 100%, 43%, 0.4) 0px, transparent 50%);
+        radial-gradient(at 100% 0%, #41b48021 0px, transparent 50%),
+        radial-gradient(at 0% 0%, #db003366 0px, transparent 50%);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -41,12 +46,12 @@ h3 {
     font-family: "Lato", sans-serif;
 }
 
-h2 {
-    @apply text-[#faebd7] text-[3vw] ml-5 mb-12 pb-0.5 tracking-wider;
+.section-title {
+    @apply text-[#faebd7] text-2xl min-[360px]:text-3xl xl:text-5xl ml-5 my-6 pb-0.5 tracking-wider;
 }
 
 h3 {
-    @apply text-[#faebd7] text-[2vw] w-full text-center mb-12 pb-0.5 tracking-wider;
+    @apply text-[#faebd7] w-full text-center mb-12 pb-0.5 tracking-wider;
 }
 
 ::-webkit-scrollbar {

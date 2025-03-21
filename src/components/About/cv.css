@@ -18,7 +18,7 @@
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translateX(-50%);
+    transform: translateY(-50%);
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -96,11 +96,11 @@ time {
 }
 
 .timeline ul li:nth-child(odd) div {
-    transform: translate3d(200px, 0, 0);
+    transform: translate3d(0, 200px, 0);
 }
 
 .timeline ul li:nth-child(even) div {
-    transform: translate3d(-200px, 0, 0);
+    transform: translate3d(0, -200px, 0);
 }
 
 .timeline ul li.in-view div {

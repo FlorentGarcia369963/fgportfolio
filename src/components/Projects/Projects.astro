@@ -15,7 +15,7 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
 ];    
 ---
 <section id="projects" class="h-[100vh]" aria-labelledby="project-title">
-    <h2 id="project-title" class="">Mes projets</h2>
+    <h2 id="project-title" class="section-title">Mes projets</h2>
     <div class="hero-slider" data-carousel>
       {projects.map((project: Project) => (
         <div id="info-container" class="carousel-cell" style={`background-image:url(${project.image});`}>
@@ -24,26 +24,27 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
             <div class="flex flex-col items-center ">
               <div class="presentation-mini ">
                 <h3 class="subtitle text-shadow">{project.context}</h3>
+                {/* VOIR SI PROBLEME TAILLE DU DU AU CHANGEMENT DANS GLOBALSTYLE */}
                 <h2 class="title text-shadow">{project.title}</h2>
                 <button data-project-id={project.id} id={`${project.id}`} class="btn more-btn">En savoir plus</button>
               </div>
               
               <div id="btn-to-display" class="hidden-part">
-                  <div class="mt-6 mx-auto text-xl w-[70%] h-[200px] overflow-y-auto text-shadow">{project.description.split('/n').map(line=>(
+                  <div class="mt-6 mx-auto w-9/10 z-50 bg-black/50 rounded-2xl p-2 sm:bg-transparent text-sm sm:text-base lg:text-lg xl:text-xl sm:w-7/10 h-[200px] overflow-y-auto text-shadow">{project.description.split('/n').map(line=>(
                     <span>{line} <br /></span>
                   ))}</div>
-                <div class="text-xl underline flex justify-center items-center gap-12 mt-6">
+                <div class="text-lg sm:text-xl underline flex justify-around items-center  my-6">
                   {project.githubLink !== '' && (
                     <button><a class="text-shadow btn flex gap-1" href={project.githubLink} target="_blank">GitHub <Image src={exitIcon} alt="" /></a></button>
                   )}
-                  <button type="button" id="see-photo-btn" data-img={project.image} class="text-shadow btn">Voir la photo</button>
+                  <button type="button" id="see-photo-btn" data-img={project.image} class="hidden sm:block text-shadow btn">Voir la photo</button>
                   <button id="reduction-btn" class="text-shadow btn">Réduire</button>
                 </div>
               </div> 
             </div>
-            <div class="flex justify-around w-full">
+            <div class="flex justify-around w-full flex-wrap">
               {project.technos.split(',').map((techno: string) => techno.trim()).map((techno: string) => (
-                <img class="w-[6%]" src={`/svg/${techno}-icon.svg`} alt={techno} loading="lazy"/>
+                <img class="w-[50px]" src={`/svg/${techno}-icon.svg`} alt={techno} loading="lazy"/>
               ))}
             </div>
           </div>

@@ -5,43 +5,63 @@ const sections = [
     {id:'projects', label: 'Projets', class:'menuLink'},
     {id:'about', label: 'Parcours', class:'menuLink'},
     {id:'contact', label: 'Contact', class:'menuLink'},
-
-
     ]
 ---
-<nav id="header" class="text-[#faebd7] fixed font-bold p-5 z-10 w-full px-5 mx-auto flex justify-between items-center gap-20">
-    <a class="homeLink" href="#landing" data-section="landing">Accueil</a>
-    <div class="flex justify-end items-center gap-20">
-        {sections.map(section=> section.id !== 'landing' && (
-                    <a class="menuLink" href={`#${section.id}`} data-section={section.id}>{section.label}</a>
-
-        ))}
-    </div>
-</nav>
-
-<script>
-if(typeof window !== "undefined"){
-    
-    document.addEventListener('DOMContentLoaded', ()=>{ 
-        const headerElm = document.getElementById('header');
-        if(headerElm){
-            
-            window.addEventListener('scroll', ()=>{
-                if(window.scrollY>0){
-                    headerElm?.classList.add('header-border')
-                    
-                }else{
-                    headerElm?.classList.remove('header-border')
-                }
-            })
-        }
-    })
-    }
-</script>
 
 <style>
-    #header {
+
+#burger-nav{
+        position: fixed;
+        /* visibility: hidden; */
+        opacity: 0;
+        background-color: black;
+        width: 100vw;
+        height: 100vh;
+        transition: all 0.6s;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+
+    }
+
+  .menu-active{
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+    }
+
+    .burger-menu-links{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 5;
+        gap: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    .burger-link{
+        display: block;
+        text-align: center;
+        border: 1px solid #faebd7;
+        border-radius: 15px;
+        padding: 1rem 2.5rem;
+        width: 200px;
+    }
+    .burger-link:hover{
+        color: black;
+        background-color:#faebd7 ;
+    }
+    @media (width >1024px) {
+        #burger-menu, #burger-nav{
+            display: none;
+        }
+        #header {
   transition: background-color 0.3s ease;
+  display:flex;
 }
 
 .header-border {
@@ -73,6 +93,8 @@ if(typeof window !== "undefined"){
 .active-link{
     text-decoration: underline;
     animation: pulse 1s ease-in-out infinite;
+    color: white ;
+    text-shadow: black 3px 3px 10px;
 	}
 
 @keyframes pulse {
@@ -81,4 +103,67 @@ if(typeof window !== "undefined"){
     }
     
 }
+
+    }
+      
+
 </style>
+<div id="burger-menu" class=" fixed w-[30px] h-[20px] flex flex-col justify-between mx-4 mt-4 cursor-pointer z-20">
+    <span class="block w-full h-[3px] bg-[#faebd7]"></span>
+    <span class="block w-full h-[3px] bg-[#faebd7]"></span>
+    <span class="block w-full h-[3px] bg-[#faebd7]"></span>
+</div>
+
+<nav id="burger-nav" class="">
+    <!-- <button id="close-bgm-btn" class="text-white z-10 relative cursor-pointer mx-5 my-2 text-3xl">x</button> -->
+    <ul class="burger-menu-links">
+        {sections.map(section=> 
+                    <li><a class="burger-link text-[#faebd7]" href={`#${section.id}`} data-section={section.id}>{section.label}</a></li>
+
+        )}
+        <p class="text-[#faebd7] italic font-light">florent.garcia369@gmail.fr</p>
+    </ul>
+</nav>
+<!-- header on laptop -->
+<nav id="header" class="text-[#faebd7] fixed font-bold py-5 z-10 w-[100vw]  mx-auto hidden justify-between items-center px-5">
+    <a class="homeLink" href="#landing" data-section="landing">Accueil</a>
+    <ul class="flex justify-end items-center px-5 gap-15">
+        {sections.map(section=> section.id !== 'landing' && (
+                    <li><a class="menuLink" href={`#${section.id}`} data-section={section.id}>{section.label}</a></li>
+
+        ))}
+        <p class="menuLink italic font-light">florent.garcia369@gmail.fr</p>
+    </ul>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{ 
+        const headerElm = document.getElementById('header');
+        if(headerElm){
+            
+            window.addEventListener('scroll', ()=>{
+                if(window.scrollY>0){
+                    headerElm?.classList.add('header-border')
+                    
+                }else{
+                    headerElm?.classList.remove('header-border')
+                }
+            })
+        }
+    })
+    
+    const bgMenu =document.getElementById('burger-menu');
+    const burgerNav = document.getElementById('burger-nav');
+    if(bgMenu){
+        bgMenu.addEventListener('click',()=>{
+            burgerNav?.classList.toggle('menu-active')
+        })
+    }
+
+    document.querySelectorAll('.burger-menu-links').forEach(link=>{
+        link.addEventListener('click', ()=>{
+            burgerNav?.classList.toggle('menu-active')
+        })
+    })
+
+</script>

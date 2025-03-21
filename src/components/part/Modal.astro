@@ -59,4 +59,15 @@ const { id } = Astro.props;
     font-size: 32px;
     cursor: pointer;
   }
+
+  @media (width <= 1000px) {
+    .modal-overlay {
+      width: 100vw;
+      height: 100vh;
+    }
+    
+  }
+  .flickity-prev-next-button{
+    display: none;
+  }
 </style>

@@ -7,7 +7,7 @@
 }
 
 .flex-skill {
-    @apply flex flex-wrap gap-8 max-w-6/10 m-auto items-center justify-center;
+    @apply flex flex-wrap gap-3 md:gap-8 lg:max-w-8/10 2xl:max-w-6/10 m-auto items-center justify-center;
 }
 
 .card {
@@ -16,15 +16,23 @@
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
-    height: 200px;
-    width: 200px;
+    width: 100%;
+    height: 100%;
+    /* height: 200px;
+    width: 200px; */
     box-shadow: 0 0 10px 1px rgba(250, 235, 215, 0.2);
     color: #faebd7;
-    border-radius: 25px;
+    border-radius: 50%;
     padding: 10px;
     position: relative;
     background-color: #101828;
     cursor: pointer;
+    margin-bottom: 30px;
+    box-shadow:
+        inset 0 0.13vmin rgb(65, 180, 128, 0.8),
+        inset 0 0.18vmin rgb(65, 180, 128, 0.8),
+        inset 0.1vmin 0.1vmin rgb(219, 0, 51, 0.8);
+
 }
 
 .card:hover {
@@ -32,8 +40,25 @@
     box-shadow: 0 0 20px 1px rgba(250, 235, 215);
     scale: 110%;
     transition: color 1s, box-shadow 1s, scale 0.3s;
+    --_float-distance: -20px;
+    --_float-speed: 1800ms;
+    animation: floating var(--_float-speed) ease-in-out infinite;
 
 }
+
+@keyframes floating {
+
+    0%,
+    100% {
+        translate: 0;
+    }
+
+    50% {
+        translate: 0 var(--_float-distance, -10px);
+    }
+}
+
+
 
 .card:hover:before,
 .card:hover:after {
@@ -43,9 +68,9 @@
 
 .card::before {
     content: "";
-    width: 90%;
-    height: 90%;
-    border-radius: 25px;
+    width: 80%;
+    height: 80%;
+    border-radius: 50px;
     background-image: linear-gradient(var(--rotate), #faebd7, #41B883 43%, #C3002F);
     position: absolute;
     filter: blur(20px);
@@ -63,8 +88,9 @@
     left: 10px;
     right: 10px;
     z-index: -1;
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
+    border-radius: 50%;
     margin: 0 auto;
     transform: scale(0.8);
     filter: blur(20px);
@@ -72,4 +98,61 @@
     opacity: 1;
     transition: opacity .5s;
     animation: spin 2.5s linear infinite alternate;
+}
+
+.card-container {
+    width: 200px;
+    height: 200px;
+}
+
+@media (width <=1280px) {
+    .card-container {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (width <=900px) {
+    .card-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (width <=768px) {
+    .card-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card-text {
+        font-size: 14px;
+    }
+}
+
+@media (width <=640px) {
+    .card-container {
+        width: 80px;
+        height: 80px;
+    }
+
+    .card-text {
+        font-size: 12px;
+    }
+}
+
+@media (width <=360px) {
+    .card-container {
+        width: auto;
+        height: auto;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+    }
+
+    .card-text {
+        font-size: 12px;
+    }
 }

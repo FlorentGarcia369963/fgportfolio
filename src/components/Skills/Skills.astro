@@ -33,27 +33,40 @@ const learningSkills: Skill[]=[
 
 ---
 
+<style>
+
+</style>
+
 <section id="skills" class="" aria-labelledby="skill-title">
-    <h2 id="skill-title" >Mes compétences</h2>
-    <h3 class=" ">Front end</h3>
-<div class="flex-skill">
-    {frontendSkills.map((skill: Skill) => (
-                <SkillCard skill={skill}></SkillCard>
-
-      ))}
+    <h2 id="skill-title" class="section-title">Mes compétences</h2>
+    <h3 class="text-xl md:text-[2vw] ">Front end</h3>
+    <ul class="flex-skill">
+        {frontendSkills.map((skill: Skill) => (
+                <li class="card-container">
+                        <SkillCard skill={skill}></SkillCard>
+        </li>
+              ))}
+    </ul>
 </div>
-<h3 class="text-[#faebd7] text-[2vw] w-full text-center my-12 pb-0.5 tracking-wider ">Back end</h3>
-<div class="flex-skill">
-    {backendSkills.map((skill: Skill) => (
-                <SkillCard skill={skill}></SkillCard>
-      ))}
+<h3 class="text-[#faebd7] text-xl md:text-[2vw] w-full text-center my-12 pb-0.5 tracking-wider ">Back end</h3>
+<div >
+    <ul class="flex-skill">
+        {backendSkills.map((skill: Skill) => (
+                <li class="card-container">
+                        <SkillCard skill={skill}></SkillCard>
+                 </li>
+              ))}
+    </ul>
 </div>
 
-<h3 class="text-[#faebd7] text-[2vw] w-full text-center my-12 pb-0.5 tracking-wider ">En cours d'apprentissage</h3>
-<div class="flex-skill">
-    {learningSkills.map((skill: Skill) => (
-        <SkillCard skill={skill}></SkillCard>
-    
-      ))}
+<h3 class="text-[#faebd7] text-xl md:text-[2vw] w-full text-center my-12 pb-0.5 tracking-wider ">En cours d'apprentissage</h3>
+<div >
+    <ul class="flex-skill">
+        {learningSkills.map((skill: Skill) => (
+        <li class="card-container">
+                <SkillCard skill={skill}></SkillCard>
+        </li>
+              ))}
+    </ul>
 </div>
 </section>
