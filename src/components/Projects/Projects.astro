@@ -27,6 +27,12 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
                 {/* VOIR SI PROBLEME TAILLE DU DU AU CHANGEMENT DANS GLOBALSTYLE */}
                 <h2 class="project-title title text-shadow">{project.title}</h2>
                 <button data-project-id={project.id} id={`${project.id}`} class="btn more-btn">En savoir plus</button>
+                {/* logos des technos utilisées */}
+                <div class="flex justify-around w-full flex-wrap mt-12 gap-12">
+              {project.technos.split(',').map((techno: string) => techno.trim()).map((techno: string) => (
+                <img class="w-1/8 max-w-[60px] md:w-[60px] min-[1080px]:w-[80px]" src={`/svg/${techno}-icon.svg`} alt={techno} loading="lazy"/>
+              ))}
+            </div>
               </div>
               
               <div id="btn-to-display" class="hidden-part absolute top-0 h-full">
@@ -45,11 +51,7 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
                 </div>
               </div> 
             </div>
-            <div class="flex justify-around w-full flex-wrap">
-              {project.technos.split(',').map((techno: string) => techno.trim()).map((techno: string) => (
-                <img class="w-[50px]" src={`/svg/${techno}-icon.svg`} alt={techno} loading="lazy"/>
-              ))}
-            </div>
+            
           </div>
         </div>  
       ))}
@@ -63,6 +65,7 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
   import { displayInfos } from "./displayInfos";
 //more informations
 const moreBtnEls = document.querySelectorAll('.more-btn');
+//Inside more infos menu
 const projectContexts = document.querySelectorAll('.project-context');
 const projectTitles = document.querySelectorAll('.project-title');
 console.log(projectContexts,projectTitles);
@@ -70,16 +73,17 @@ console.log(projectContexts,projectTitles);
 //Beginning of listening click on more informations button
 moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
   displayInfos(btn)
+  const project= btn.closest('.inner');
+  const reductionBtnEl = project?.querySelector('#reduction-btn')
+  const btnToDisplayEl = project?.querySelector('#btn-to-display') as HTMLElement;
+  const presentationEl = project?.querySelector('.presentation-mini')
+
+  
   // btn.classList.add('hidden');
   projectContexts?.forEach(projectContext => projectContext.classList.add('hidden', 'min-[800px]:block'))
   projectTitles?.forEach(projectTitle => projectTitle.classList.add('hidden', 'min-[800px]:block'))
-
-  const project= btn.closest('.inner');
-  const reductionBtnEl = project?.querySelector('#reduction-btn')
   
-  const btnToDisplayEl = project?.querySelector('#btn-to-display') as HTMLElement;
   // // btnToDisplayEl?.classList.remove('hidden-part')
-  const presentationEl = project?.querySelector('.presentation-mini')
   // presentationEl?.classList.add('clicked')
   // btnToDisplayEl?.classList.add("visible","flex","flex-col")
   // See photo
@@ -111,15 +115,17 @@ moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
   })
 
   if (btnToDisplayEl) {
-// closing
-  reductionBtnEl?.addEventListener('click', ()=>{
-    console.log('click');
+    function closeMoreInfos(){
     projectContexts?.forEach(projectContext => projectContext.classList.remove('hidden', 'min-[800px]:block'))
     projectTitles?.forEach(projectTitle => projectTitle.classList.remove('hidden', 'min-[800px]:block'))
-    btn.classList.add('hidden');
 presentationEl?.classList.remove('clicked')
 btnToDisplayEl?.classList.remove("visible","flex","flex-col")
 btn.classList.remove('hidden');
+    }
+// closing
+  reductionBtnEl?.addEventListener('click', ()=>{
+    console.log('click');
+    closeMoreInfos()
 
   })
   // Close by calling next or previous project
@@ -127,16 +133,14 @@ btn.classList.remove('hidden');
   console.log(fArrows);
   fArrows.forEach(arrow =>{
     arrow  .addEventListener('click', ()=>{
-    btn.classList.add('hidden');
-    projectContexts?.forEach(projectContext => projectContext.classList.remove('hidden', 'min-[800px]:block'))
-    projectTitles?.forEach(projectTitle => projectTitle.classList.remove('hidden', 'min-[800px]:block'))
-presentationEl?.classList.remove('clicked')
-btnToDisplayEl?.classList.remove("visible","flex","flex-col")
-btn.classList.remove('hidden');
+      closeMoreInfos()
 // Close modal when click on previous or next
 photoModal?.classList.remove('show')
   })
   })
+
+  // Close by swiping
+  
 }
 }))
 
