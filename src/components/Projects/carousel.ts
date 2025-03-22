@@ -3,6 +3,8 @@ import Flickity from "flickity";
 const mediaQuery = window.matchMedia("(min-width: 1024px)");
 const options = {
     accessibility: true,
+    draggable: true,
+    dragThreshold: 10,
     prevNextButtons: true,
     pageDots: true,
     setGallerySize: false,
