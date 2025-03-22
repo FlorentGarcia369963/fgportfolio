@@ -101,7 +101,6 @@
     /* test-2 */
     animation: smooth-rotate 8s linear infinite;
     -webkit-animation: smooth-rotate 8s linear infinite;
-    /* opacity: 30%; */
     will-change: transform, opacity;
 }
 
@@ -220,6 +219,13 @@
 
     .card-text {
         font-size: 12px;
+    }
+
+    .card::before,
+    .card::after {
+        animation: none;
+        -webkit-animation: none;
+        /* opacity: 0; */
     }
 }
 

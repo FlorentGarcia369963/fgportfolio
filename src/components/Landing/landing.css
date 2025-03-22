@@ -12,7 +12,8 @@
 
 .animation-transition:hover {
     transform: translate3d(0, -1px, 20px);
-    animation: on-hover 3s ease-in-out infinite;
+    animation: on-h-webkit-over 3s ease-in-out infinite;
+    -webkit-animation: on-hover 3s ease-in-out infinite;
 }
 
 @-webkit-keyframes on-hover {
@@ -70,6 +71,7 @@
     text-shadow: 2px 2px 10px #41B883;
     -webkit-animation: loading 1s ease-in-out infinite alternate;
     animation: loading 1s ease-in-out infinite alternate;
+    will-change: text-shadow, color;
 }
 
 .m:hover {
