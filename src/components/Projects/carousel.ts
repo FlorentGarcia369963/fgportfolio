@@ -5,6 +5,8 @@ const options = {
     accessibility: true,
     draggable: true,
     dragThreshold: 10,
+    freeScroll: false,
+    touchVerticalScroll: false,
     prevNextButtons: true,
     pageDots: true,
     setGallerySize: false,
