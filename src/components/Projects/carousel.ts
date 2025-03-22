@@ -4,7 +4,7 @@ const mediaQuery = window.matchMedia("(min-width: 1024px)");
 const options = {
     accessibility: true,
     draggable: true,
-    dragThreshold: 10,
+    dragThreshold: 20,
     freeScroll: false,
     touchVerticalScroll: false,
     prevNextButtons: true,
