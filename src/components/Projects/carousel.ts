@@ -27,14 +27,14 @@ const slides = document.getElementsByClassName("carousel-cell");
 
 if (carousel) {
     const flkty = new Flickity(carousel, options);
+    const moreBtnEls = document.querySelectorAll(".more-btn");
+    const projectContexts = document.querySelectorAll(".project-context");
+    const projectTitles = document.querySelectorAll(".project-title");
+    const reductionBtnEls = document.querySelectorAll("#reduction-btn");
+    const btnToDisplayEls = document.querySelectorAll("#btn-to-display");
+    const presentationEls = document.querySelectorAll(".presentation-mini");
 
     flkty.on("dragStart", () => {
-        const moreBtnEls = document.querySelectorAll(".more-btn");
-        const projectContexts = document.querySelectorAll(".project-context");
-        const projectTitles = document.querySelectorAll(".project-title");
-        const reductionBtnEls = document.querySelectorAll("#reduction-btn");
-        const btnToDisplayEls = document.querySelectorAll("#btn-to-display");
-        const presentationEls = document.querySelectorAll(".presentation-mini");
         projectContexts.forEach((item) =>
             item.classList.remove("hidden", "min-[800px]:block")
         );

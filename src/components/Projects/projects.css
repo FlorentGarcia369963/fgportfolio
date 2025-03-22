@@ -148,6 +148,14 @@
     box-shadow: none;
 }
 
+.flickity-page-dot {
+    background: #838280;
+}
+
+.flickity-page-dot.is-selected {
+    background: #faebd7;
+}
+
 @media (width <=768px) {
     .hero-slider .carousel-cell .inner .title {
         font-size: 2rem;

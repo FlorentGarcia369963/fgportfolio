@@ -28,7 +28,7 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
                 <h2 class="project-title title text-shadow">{project.title}</h2>
                 <button data-project-id={project.id} id={`${project.id}`} class="btn more-btn">En savoir plus</button>
                 {/* logos des technos utilisées */}
-                <div class="flex justify-around w-9/10 flex-wrap mt-12 gap-12">
+                <div class="flex justify-around w-9/10 flex-wrap mt-24 gap-12">
               {project.technos.split(',').map((techno: string) => techno.trim()).map((techno: string) => (
                 <img class="w-1/8 max-w-[60px] md:w-[60px] min-[1080px]:w-[80px]" src={`/svg/${techno}-icon.svg`} alt={techno} loading="lazy"/>
               ))}
