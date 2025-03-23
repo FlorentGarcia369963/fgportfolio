@@ -200,7 +200,7 @@ textarea {
         <div class="">
           <div class="input-block">
             <label for="email">Votre email</label>
-            <input id="email" name="email" type="text" class="form-control" required>
+            <input id="email" name="email" type="email" class="form-control" required>
           </div>
         </div>
         <div class="">
@@ -212,7 +212,7 @@ textarea {
         <div class="">
           <div class="input-block textarea">
             <label for="message">Votre message</label>
-            <textarea id="message" name="message" rows="3" type="text" class="form-control" required></textarea>
+            <textarea id="message" name="message" rows="3" class="form-control" required></textarea>
           </div>
         </div>
         <div class="">
@@ -234,7 +234,30 @@ textarea {
     
     if(form){
       form.addEventListener('submit',(event)=>{      
-        form.reset()})
+        event.preventDefault();
+        const nom = form.querySelector('#nom') as HTMLInputElement;
+    const email = form.querySelector('#email') as HTMLInputElement;
+    const subject = form.querySelector('#subject') as HTMLInputElement;
+    const message = form.querySelector('#message') as HTMLInputElement;
+    console.log(nom.value, email.value, subject.value, message.value);
+    
+if(nom && email && subject && message){
+  console.log(nom.value, email.value, subject.value, message.value);
+
+  const cleanNom = DOMPurify.sanitize(nom.value);
+  const cleanEmail = DOMPurify.sanitize(email.value);
+  const cleanSubject = DOMPurify.sanitize(subject.value);
+  const cleanMessage = DOMPurify.sanitize(message.value);
+  nom.value = cleanNom;
+  email.value = cleanEmail;
+  subject.value = cleanSubject;
+  message.value = cleanMessage;
+  console.log(nom.value, email.value, subject.value, message.value);
+
+  form.submit();
+      form.reset()
+}
+      })
     }
     
   
