@@ -112,7 +112,7 @@ textarea {
   top: 0;
 }
 .contact-form .square-button {
-  background-color: #41B883;
+  background-color: #2f865f;
   color: #fff;
   font-size: 26px;
   text-transform: uppercase;
@@ -186,11 +186,10 @@ textarea {
 
 
 </style>
-
     <section id="contact" class="contact-wrap" aria-labelledby="contact-title">
         <h2 id="contact-title" class="section-title">Me contacter</h2>
         <p class="text-[#faebd7] text-[16px] min-[420px]:text-[20px] w-full text-center">Vous pouvez m'écrire à l'adresse email <span class="underline">florent.garcia369@gmail.com</span> ou remplir le formulaire ci dessous</p>
-      <form action="https://formspree.io/f/xzzedvnw" method="POST" class="contact-form">
+      <form action="https://formspree.io/f/xzzedvnw" method="POST" id="contact-form" class="contact-form">
         <div class="">
         <div class="">
           <div class="input-block">
@@ -227,10 +226,17 @@ textarea {
 
 <script>
 
-
-    document.addEventListener('DOMContentLoaded', function() {
-  // Sélectionner tous les champs de formulaire
-  const formControls = document.querySelectorAll('.contact-form .form-control');
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionner tous les champs de formulaire
+    const formControls = document.querySelectorAll('.contact-form .form-control');
+    const form=document.getElementById('contact-form') as HTMLFormElement;
+    
+    if(form){
+      form.addEventListener('submit',(event)=>{      
+        form.reset()})
+    }
+    
   
   // Vérifier si un champ a une valeur au chargement de la page
   formControls.forEach(function(input) {

@@ -1,6 +1,7 @@
 ---
 import type { Project } from './../models/partsModels';
 import 'flickity/dist/flickity.min.css';
+
 import PhotoModal from './../part/Modal.astro';
 import exitIcon from "../../assets/exit.svg"
 import { Image } from 'astro:assets';
@@ -18,19 +19,20 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
     <h2 id="project-title" class="section-title">Mes projets</h2>
     <div class="hero-slider" data-carousel>
       {projects.map((project: Project) => (
-        <div id="info-container" class="carousel-cell" style={`background-image:url(${project.image});`}>
+        <div id="info-container" class="carousel-cell" data-flickity-bg-lazyload={project.image} >
+          {/* style={`background-image:url(${project.image});`} */}
           <div class="overlay"></div>
           <div class="inner">
             <div class="flex flex-col items-center ">
               <div class="presentation-mini ">
                 <h3  class="project-context subtitle text-shadow">{project.context}</h3>
-                {/* VOIR SI PROBLEME TAILLE DU DU AU CHANGEMENT DANS GLOBALSTYLE */}
                 <h2 class="project-title title text-shadow">{project.title}</h2>
+                {/* FOCUSABLE */}
                 <button data-project-id={project.id} id={`${project.id}`} class="btn more-btn">En savoir plus</button>
                 {/* logos des technos utilisées */}
                 <div class="flex justify-around w-9/10 flex-wrap mt-24 gap-12">
               {project.technos.split(',').map((techno: string) => techno.trim()).map((techno: string) => (
-                <img class="w-1/8 max-w-[60px] md:w-[60px] min-[1080px]:w-[80px]" src={`/svg/${techno}-icon.svg`} alt={techno} loading="lazy"/>
+                <img height="80" width="80" class="w-1/8 max-w-[60px] md:w-[60px] min-[1080px]:w-[80px]" src={`/svg/${techno}-icon.svg`} alt={techno} loading="lazy"/>
               ))}
             </div>
               </div>
@@ -41,13 +43,15 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
                   ))}</div>
                 <div class="text-lg sm:text-xl underline flex justify-around items-center  my-6">
                   {project.githubLink !== '' && (
-                    <button><a class="text-shadow btn flex gap-1" href={project.githubLink} target="_blank">GitHub <Image src={exitIcon} alt="" /></a></button>
+                    <button id="btn-gh-link" ><a id="gh-link" ="true" class="text-shadow btn flex gap-1" href={project.githubLink} target="_blank">GitHub <Image src={exitIcon} alt="" /></a></button>
                   )}
                   {project.id !== 3 &&(
-                    <button type="button" id="see-photo-btn" data-img={project.image} class=" text-shadow btn">Voir la photo</button>
+                    // FOCUSABLE
+                    <button  type="button" id="see-photo-btn" data-img={project.image} class=" text-shadow btn">Voir la photo</button>
 
                   )}
-                  <button id="reduction-btn" class="text-shadow btn">Réduire</button>
+                  {/* FOCUSABLE */}
+                  <button  id="reduction-btn" class="text-shadow btn">Réduire</button>
                 </div>
               </div> 
             </div>
@@ -58,7 +62,7 @@ storage.`, technos:'vuejs, vitejs, tailwindcss, laravel, redis, supabase, docker
     </div>
     </section>
     <PhotoModal id="photoModal" >
-      <img class="h-[83vh] w-auto mx-auto mt-10 mb-1 object-contain " id="img-modal" src="" alt="" loading="eager">
+      <img class="h-[83vh] w-auto mx-auto mt-10 mb-1 object-contain " id="img-modal" src="" alt="" loading="lazy">
     </PhotoModal>
     <script src="./carousel.ts"></script>
 <script>
@@ -68,7 +72,8 @@ const moreBtnEls = document.querySelectorAll('.more-btn');
 //Inside more infos menu
 const projectContexts = document.querySelectorAll('.project-context');
 const projectTitles = document.querySelectorAll('.project-title');
-console.log(projectContexts,projectTitles);
+// console.log(projectTitles);
+
 
 //Beginning of listening click on more informations button
 moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
@@ -78,17 +83,23 @@ moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
   const btnToDisplayEl = project?.querySelector('#btn-to-display') as HTMLElement;
   const presentationEl = project?.querySelector('.presentation-mini')
 
+
   
   // btn.classList.add('hidden');
-  projectContexts?.forEach(projectContext => projectContext.classList.add('hidden', 'min-[800px]:block'))
-  projectTitles?.forEach(projectTitle => projectTitle.classList.add('hidden', 'min-[800px]:block'))
+  projectContexts?.forEach(projectContext => {
+    projectContext.classList.add('hidden')
+    projectContext.classList.remove('min-[800px]:block')
+  });
+  projectTitles?.forEach(projectTitle => {
+    projectTitle.classList.add('hidden')
+    projectTitle.classList.remove('min-[800px]:block')
+  })
   
   // // btnToDisplayEl?.classList.remove('hidden-part')
   // presentationEl?.classList.add('clicked')
   // btnToDisplayEl?.classList.add("visible","flex","flex-col")
   // See photo
   const displayPhotoBtnEl = project?.querySelector('#see-photo-btn');
-  console.log(displayPhotoBtnEl);
   
   const photoModal = document.getElementById('photoModal')
 
@@ -116,21 +127,30 @@ moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
 
   if (btnToDisplayEl) {
     function closeMoreInfos(){
-    projectContexts?.forEach(projectContext => projectContext.classList.remove('hidden', 'min-[800px]:block'))
-    projectTitles?.forEach(projectTitle => projectTitle.classList.remove('hidden', 'min-[800px]:block'))
+      projectContexts?.forEach(projectContext => {
+    projectContext.classList.remove('hidden')
+    projectContext.classList.add('min-[800px]:block')
+  });
+  projectTitles?.forEach(projectTitle => {
+    projectTitle.classList.remove('hidden')
+    projectTitle.classList.add('min-[800px]:block')
+  })
 presentationEl?.classList.remove('clicked')
 btnToDisplayEl?.classList.remove("visible","flex","flex-col")
+if(displayPhotoBtnEl){
+  console.log(displayPhotoBtnEl);
+  
+}
 btn.classList.remove('hidden');
+
     }
 // closing
   reductionBtnEl?.addEventListener('click', ()=>{
-    console.log('click');
     closeMoreInfos()
 
   })
   // Close by calling next or previous project
   const fArrows = document.querySelectorAll('.flickity-prev-next-button')
-  console.log(fArrows);
   fArrows.forEach(arrow =>{
     arrow  .addEventListener('click', ()=>{
       closeMoreInfos()

@@ -2,6 +2,7 @@ export function displayInfos(btn) {
     btn.classList.add("hidden");
     const project = btn.closest(".inner");
     const reductionBtnEl = project?.querySelector("#reduction-btn");
+    const displayPhotoBtnEl = project?.querySelector("#see-photo-btn");
 
     const btnToDisplayEl = project?.querySelector(
         "#btn-to-display"

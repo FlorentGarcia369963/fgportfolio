@@ -174,7 +174,6 @@ const cardInfo = `card-info-${index}`;
           // const cardBg = document.getElementById("card-bg");
           // const cardIn = document.getElementById("card-info");
 
-          console.log(cards);
           
 
           
@@ -206,12 +205,10 @@ const cardInfo = `card-info-${index}`;
     
           function handleMouseMove(e) {
             const cardId =e.target.closest('.cd-card').getAttribute('data-index');
-            console.log(cardId);
             
             card = cards[cardId]
             cardBg = document.getElementById(`card-bg-${cardId}`)
-            console.log(card);
-            console.log(cardBg);
+        
             
             
 
@@ -219,7 +216,6 @@ const cardInfo = `card-info-${index}`;
     
             mouseX = e.clientX - left - width / 2;
             mouseY = e.clientY - top - height / 2;
-            // console.log(e.pageX);
            
             
             

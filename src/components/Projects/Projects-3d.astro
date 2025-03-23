@@ -218,14 +218,11 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95); */
       let mouseY = 0;
       let mouseLeaveDelay = null;
 
-      console.log(card?.offsetWidth);
-      console.log(card?.offsetHeight);
 
       
       width = card.offsetWidth;
       height = card.offsetHeight;
-      console.log(width);
-      console.log(height);
+    
       
       
       card.addEventListener("mousemove", handleMouseMove);
@@ -237,7 +234,6 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95); */
 
 mouseX = e.clientX - left - width / 2;
 mouseY = e.clientY - top - height / 2;
-        console.log(e.pageX);
        
         
         

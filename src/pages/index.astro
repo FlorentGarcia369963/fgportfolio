@@ -7,17 +7,15 @@ import CV from '../components/About/CV.astro';
 import Layout from '../layouts/Layout.astro';
 import Contact from '../components/Contact/Contact.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
 	<Header />
 	<Landing />
 	<Skills />
-	<Projects />
-	<CV />
-	<Contact />
+	<Projects  />
+	<CV  />
+	<Contact  />
 </Layout>
 
 <style>
@@ -27,32 +25,19 @@ import Contact from '../components/Contact/Contact.astro';
 
 <script>
 	window.addEventListener('DOMContentLoaded', (event)=>{
-
-
-		const sections = document.querySelectorAll('section');
-	console.log(sections);
-	
-	const navlinks = document.querySelectorAll('.menuLink');
-	
+	const sections = document.querySelectorAll('section');
 	const observer = new IntersectionObserver((entries) => {
 	  entries.forEach((entry) => {
-		// console.log(entry); 
 		const link = document.querySelector(`[data-section="${entry.target.id}"]`)
-		console.log(entry.target.id);
-		
-		console.log(link);
-		
 		if(entry.isIntersecting){
 			link?.classList.add('active-link')
 		}else{
 			link?.classList.remove('active-link')
-	
 		}
 	  });
 	}, {
 	  threshold: 0.4
 	});
-	
 	sections.forEach((section) => {
 	  observer.observe(section);
 	});

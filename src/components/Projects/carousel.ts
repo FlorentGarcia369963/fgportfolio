@@ -1,8 +1,10 @@
 //Flickity carousel
 import Flickity from "flickity";
+import "flickity-bg-lazyload";
 const mediaQuery = window.matchMedia("(min-width: 1024px)");
 const options = {
     accessibility: true,
+    bgLazyLoad: true,
     draggable: true,
     dragThreshold: 20,
     freeScroll: false,
@@ -34,6 +36,23 @@ if (carousel) {
     const btnToDisplayEls = document.querySelectorAll("#btn-to-display");
     const presentationEls = document.querySelectorAll(".presentation-mini");
 
+    //ACCESSIBILITY
+    const updateTabIndex = () => {
+        document.querySelectorAll(".carousel-cell").forEach((cell) => {
+            const isSelected = cell.classList.contains("is-selected");
+            cell.querySelectorAll("button, a").forEach((el) => {
+                if (isSelected) {
+                    el.removeAttribute("tabindex");
+                } else {
+                    el.setAttribute("tabindex", "-1");
+                }
+            });
+        });
+    };
+    updateTabIndex();
+    flkty.on("change", updateTabIndex);
+
+    // CHANGE DISPLAY ON DRAG
     flkty.on("dragStart", () => {
         projectContexts.forEach((item) =>
             item.classList.remove("hidden", "min-[800px]:block")
@@ -52,8 +71,6 @@ if (carousel) {
     function handleMobileScreens(e?: MediaQueryListEvent) {
         const isDesktop = e ? e.matches : mediaQuery.matches;
         if (isDesktop) {
-            console.log("mode desktop");
-
             if (!(flkty as any)._scrollEventAttached) {
                 flkty.on("scroll", function () {
                     flkty.slides.forEach(function (slide: any, i: number) {
