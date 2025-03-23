@@ -184,10 +184,6 @@ textarea {
   color: #ff7c62;
 }
 
-input:-webkit-autofill {
-  background-color: transparent !important; 
-}
-
 
 </style>
     <section id="contact" class="contact-wrap" aria-labelledby="contact-title">
@@ -198,25 +194,25 @@ input:-webkit-autofill {
         <div class="">
           <div class="input-block">
             <label for="nom">Votre Nom</label>
-            <input id="nom" name="nom" type="text" class="form-control" required>
+            <input id="nom" name="nom" type="text" class="form-control" required autocomplete="off">
           </div>
         </div>
         <div class="">
           <div class="input-block">
             <label for="email">Votre email</label>
-            <input id="email" name="email" type="email" class="form-control" required>
+            <input id="email" name="email" type="email" class="form-control" required autocomplete="off">
           </div>
         </div>
         <div class="">
           <div class="input-block">
             <label for="subject">Le sujet de votre message</label>
-            <input id="subject" name="subject" type="text" class="form-control" required>
+            <input id="subject" name="subject" type="text" class="form-control" required autocomplete="off">
           </div>
         </div>
         <div class="">
           <div class="input-block textarea">
             <label for="message">Votre message</label>
-            <textarea id="message" name="message" rows="3" class="form-control" required></textarea>
+            <textarea id="message" name="message" rows="3" class="form-control" required autocomplete="off"></textarea>
           </div>
         </div>
         <div class="">
