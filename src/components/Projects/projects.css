@@ -233,4 +233,11 @@
     .hero-slider .carousel-cell .inner .btn {
         font-size: 10px;
     }
+
+    #see-photo-btn,
+    #reduction-btn,
+    #btn-gh-link {
+        font-size: 8px;
+        padding: 2px 4px;
+    }
 }
