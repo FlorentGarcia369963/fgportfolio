@@ -14,8 +14,8 @@
 }
 
 .hero-slider {
-    width: 80%;
-    height: 80vh;
+    width: 60%;
+    height: 70vh;
     margin: auto;
     overflow: hidden;
     border-radius: 25px;
@@ -121,6 +121,7 @@
     top: 50%;
     transform: translateY(-50%);
     transition: position 0.3s ease, transform 0.3s ease;
+    width: 100%;
 }
 
 .presentation-mini.clicked {
