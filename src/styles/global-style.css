@@ -46,6 +46,9 @@ section {
     /* padding-top: 50px; */
     scroll-margin-top: 60px;
     margin-bottom: 100px;
+    max-width: 1400px;
+    margin: auto;
+
 }
 
 h1,
@@ -55,7 +58,7 @@ h3 {
 }
 
 .section-title {
-    @apply text-[#faebd7] text-2xl min-[360px]:text-3xl xl:text-5xl lg:ml-5 w-full text-center lg:text-left my-6 pb-0.5 tracking-wider;
+    @apply text-[#faebd7] text-2xl min-[360px]:text-3xl xl:text-5xl lg:ml-5 w-full text-center lg:text-left my-6 mb-24 pb-0.5 tracking-wider;
 }
 
 h3 {

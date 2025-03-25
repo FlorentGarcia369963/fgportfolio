@@ -7,7 +7,7 @@
 }
 
 .flex-skill {
-    @apply flex flex-wrap gap-3 md:gap-8 w-9/10 lg:max-w-8/10 2xl:max-w-6/10 m-auto items-center justify-center;
+    @apply flex flex-wrap gap-3 md:gap-8 w-9/10 lg:max-w-8/10 2xl:max-w-7/10 m-auto items-center justify-center;
 }
 
 .card {
@@ -111,23 +111,23 @@
 
 @media (width >=360px) {
     .card-container {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: auto;
     }
 
 }
 
-@media (width >=640px) {
+@media (width >=420px) {
     .card-container {
-        width: 80px;
         height: 80px;
     }
+
 }
 
 @media (width >=768px) {
     .card-container {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
 
     .card-text {
@@ -137,8 +137,8 @@
 
 @media (width >=900px) {
     .card-container {
-        width: 150px;
-        height: 150px;
+        width: 130px;
+        height: 130px;
     }
 }
 
@@ -151,12 +151,7 @@
     }
 }
 
-@media (width >=1280px) {
-    .card-container {
-        width: 200px;
-        height: 200px;
-    }
-}
+
 
 /* ANIMATIONS */
 @keyframes smooth-rotate {
