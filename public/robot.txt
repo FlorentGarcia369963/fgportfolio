@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://florent-garcia.fr/sitemap.xml
+Sitemap: https://www.florent-garcia.fr/sitemap.xml
