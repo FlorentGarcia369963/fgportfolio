@@ -6,6 +6,8 @@ const options = {
     accessibility: true,
     bgLazyLoad: true,
     draggable: true,
+    wrapAround: true,
+    autoPlay: 4000,
     dragThreshold: 20,
     freeScroll: false,
     touchVerticalScroll: false,

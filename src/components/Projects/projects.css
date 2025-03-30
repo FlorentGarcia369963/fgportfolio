@@ -113,6 +113,7 @@
     border: 0 solid #ff0000;
 }
 
+
 .presentation-mini {
     display: flex;
     flex-direction: column;
@@ -143,6 +144,8 @@
     pointer-events: auto;
 }
 
+
+
 .flickity-prev-next-button:focus,
 .flickity-prev-next-button:active {
     outline: none;
@@ -160,13 +163,15 @@
 @media (width <=768px) {
     .hero-slider .carousel-cell .inner .title {
         font-size: 2rem;
-
-
     }
 
     .hero-slider .carousel-cell .inner .subtitle {
         font-size: 1.5rem;
 
+    }
+
+    .hero-slider .flickity-prev-next-button .arrow {
+        fill: transparent;
     }
 }
 

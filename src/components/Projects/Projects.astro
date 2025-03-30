@@ -72,6 +72,7 @@ const moreBtnEls = document.querySelectorAll('.more-btn');
 //Inside more infos menu
 const projectContexts = document.querySelectorAll('.project-context');
 const projectTitles = document.querySelectorAll('.project-title');
+
 // console.log(projectTitles);
 
 
@@ -81,7 +82,8 @@ moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
   const project= btn.closest('.inner');
   const reductionBtnEl = project?.querySelector('#reduction-btn')
   const btnToDisplayEl = project?.querySelector('#btn-to-display') as HTMLElement;
-  const presentationEl = project?.querySelector('.presentation-mini')
+  const presentationEl = project?.querySelector('.presentation-mini');
+
 
 
   
@@ -130,6 +132,7 @@ moreBtnEls.forEach(btn=> btn.addEventListener('click',(e)=>{
       projectContexts?.forEach(projectContext => {
     projectContext.classList.remove('hidden')
     projectContext.classList.add('min-[800px]:block')
+
   });
   projectTitles?.forEach(projectTitle => {
     projectTitle.classList.remove('hidden')
@@ -147,12 +150,14 @@ btn.classList.remove('hidden');
 // closing
   reductionBtnEl?.addEventListener('click', ()=>{
     closeMoreInfos()
+    
+
 
   })
   // Close by calling next or previous project
   const fArrows = document.querySelectorAll('.flickity-prev-next-button')
   fArrows.forEach(arrow =>{
-    arrow  .addEventListener('click', ()=>{
+    arrow.addEventListener('click', ()=>{
       closeMoreInfos()
 // Close modal when click on previous or next
 photoModal?.classList.remove('show')
